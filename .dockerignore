@@ -1,0 +1,11 @@
+**
+
+!/src/**
+!/static/**
+!/.npmrc
+!/svelte.config.js
+!/vite.config.ts
+!/tsconfig.json
+!/package.json
+!/yarn.lock
+!/entrypoint.js
