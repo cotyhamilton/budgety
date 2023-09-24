@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // handle signals in container
 import { server as app } from "./index.js";
 
