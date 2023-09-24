@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone repo
+      uses: actions/checkout@v3
+    - name: Setup node 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'yarn'
+    - name: Install dependencies
+      run: yarn install --immutable
+    - name: Build
+      run: yarn build
+    - name: Unit Tests
+      run: yarn test:coverage
+    - name: Integration Tests
+      run: yarn playwright install && yarn test:integration
+    
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone repo
+      uses: actions/checkout@v3
+    - name: Setup buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Version
+      run: |
+        VERSION=$(< version.txt)_$(date +%F).${{ github.run_number }}.${{ github.run_attempt }}
+        echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+    - name: Build images
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+        sbom: true
+    - name: Auth ghcr.io
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+    - name: Push images
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+        sbom: true
+        push: true
+      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}

@@ -1,8 +1,9 @@
 # Build
 FROM node:18-alpine as build
+ARG BUILDKIT_SBOM_SCAN_STAGE=true
 WORKDIR /app
 COPY ./package.json ./yarn.lock ./
-RUN yarn
+RUN yarn install --immutable
 COPY . .
 RUN yarn build
 
