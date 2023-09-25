@@ -1,5 +1,5 @@
 # Build
-FROM node:18-alpine AS build
+FROM node:19-alpine AS build
 ARG BUILDKIT_SBOM_SCAN_STAGE=true
 WORKDIR /app
 COPY ./package.json ./yarn.lock ./
@@ -8,7 +8,7 @@ COPY . .
 RUN yarn build
 
 # Runtime
-FROM node:18-alpine AS runtime
+FROM node:19-alpine AS runtime
 USER node:node
 WORKDIR /app
 COPY --from=build /app/package.json /app/entrypoint.js /app/build ./
