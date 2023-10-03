@@ -1,0 +1,50 @@
+version: "3"
+services:
+  budgety:
+    image: budgety
+    ports:
+      - "3000:3000"
+    environment:
+      API_URL: http://directus:8055
+      DIRECTUS_KEY: ${DIRECTUS_KEY}
+      DIRECTUS_SECRET: ${DIRECTUS_SECRET}
+      DIRECTUS_EMAIL: ${DIRECTUS_EMAIL}
+      DIRECTUS_PASSWORD: ${DIRECTUS_PASSWORD}
+      ORIGIN: http://localhost:3000
+      LOG_LEVEL: debug
+  directus:
+    image: directus/directus:latest
+    ports:
+      - "8055:8055"
+    restart: always
+    environment:
+      ACCESS_TOKEN_TTL: 1m
+      REFRESH_TOKEN_TTL: 7d
+      KEY: ${DIRECTUS_KEY}
+      SECRET: ${DIRECTUS_SECRET}
+      ADMIN_EMAIL: ${DIRECTUS_EMAIL}
+      ADMIN_PASSWORD: ${DIRECTUS_PASSWORD}
+      DB_CLIENT: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: budget
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      WEBSOCKETS_ENABLED: true
+    volumes:
+      - ./api/extensions/modules:/directus/extensions/modules:ro
+      - ./api/schema.json:/directus/schema.json:ro
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: budget
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local

@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  budgety:
+    env_file: ../.env
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+
+  postgres:
+    env_file: ../.env
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: budget
+
+  directus:
+    env_file: ../.env
+    image: directus/directus:latest
+    restart: unless-stopped
+    environment:
+      ACCESS_TOKEN_TTL: 1m
+      REFRESH_TOKEN_TTL: 7d
+      DB_CLIENT: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: budget
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      WEBSOCKETS_ENABLED: true
+    volumes:
+      - ../api/extensions/modules:/directus/extensions/modules:ro
+      - ../api/schema.json:/directus/schema.json:ro
+    command:
+      - /bin/sh
+      - -c
+      - |
+        node /directus/cli.js bootstrap
+        node /directus/cli.js schema apply --yes /directus/schema.json
+        node /directus/cli.js start 
+
+volumes:
+  postgres-data:

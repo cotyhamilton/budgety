@@ -1,0 +1,1892 @@
+{
+    "version": 1,
+    "directus": "13.0.0",
+    "vendor": "postgres",
+    "collections": [
+        {
+            "collection": "boxes",
+            "meta": {
+                "accountability": "all",
+                "archive_app_filter": true,
+                "archive_field": null,
+                "archive_value": null,
+                "collapse": "open",
+                "collection": "boxes",
+                "color": null,
+                "display_template": null,
+                "group": null,
+                "hidden": false,
+                "icon": null,
+                "item_duplication_fields": null,
+                "note": null,
+                "preview_url": null,
+                "singleton": false,
+                "sort": null,
+                "sort_field": null,
+                "translations": null,
+                "unarchive_value": null
+            },
+            "schema": {
+                "name": "boxes"
+            }
+        },
+        {
+            "collection": "currency",
+            "meta": {
+                "accountability": "all",
+                "archive_app_filter": true,
+                "archive_field": null,
+                "archive_value": "archived",
+                "collapse": "open",
+                "collection": "currency",
+                "color": null,
+                "display_template": null,
+                "group": null,
+                "hidden": false,
+                "icon": null,
+                "item_duplication_fields": null,
+                "note": null,
+                "preview_url": null,
+                "singleton": false,
+                "sort": null,
+                "sort_field": null,
+                "translations": null,
+                "unarchive_value": "draft"
+            },
+            "schema": {
+                "name": "currency"
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "meta": {
+                "accountability": "all",
+                "archive_app_filter": true,
+                "archive_field": null,
+                "archive_value": "archived",
+                "collapse": "open",
+                "collection": "financial_accounts",
+                "color": null,
+                "display_template": null,
+                "group": null,
+                "hidden": false,
+                "icon": null,
+                "item_duplication_fields": null,
+                "note": null,
+                "preview_url": null,
+                "singleton": false,
+                "sort": null,
+                "sort_field": null,
+                "translations": null,
+                "unarchive_value": "draft"
+            },
+            "schema": {
+                "name": "financial_accounts"
+            }
+        },
+        {
+            "collection": "transactions",
+            "meta": {
+                "accountability": "all",
+                "archive_app_filter": true,
+                "archive_field": null,
+                "archive_value": null,
+                "collapse": "open",
+                "collection": "transactions",
+                "color": null,
+                "display_template": null,
+                "group": null,
+                "hidden": false,
+                "icon": null,
+                "item_duplication_fields": null,
+                "note": null,
+                "preview_url": null,
+                "singleton": false,
+                "sort": null,
+                "sort_field": null,
+                "translations": null,
+                "unarchive_value": null
+            },
+            "schema": {
+                "name": "transactions"
+            }
+        }
+    ],
+    "fields": [
+        {
+            "collection": "boxes",
+            "field": "balance",
+            "type": "integer",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "balance",
+                "group": null,
+                "hidden": false,
+                "interface": "input",
+                "note": null,
+                "options": {
+                    "min": null
+                },
+                "readonly": false,
+                "required": true,
+                "sort": 8,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "balance",
+                "table": "boxes",
+                "data_type": "integer",
+                "default_value": 0,
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": false,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "date_created",
+            "type": "timestamp",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": "datetime",
+                "display_options": {
+                    "relative": true
+                },
+                "field": "date_created",
+                "group": null,
+                "hidden": true,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 3,
+                "special": [
+                    "date-created"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "date_created",
+                "table": "boxes",
+                "data_type": "timestamp with time zone",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "date_updated",
+            "type": "timestamp",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": "datetime",
+                "display_options": {
+                    "relative": true
+                },
+                "field": "date_updated",
+                "group": null,
+                "hidden": true,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 5,
+                "special": [
+                    "date-updated"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "date_updated",
+                "table": "boxes",
+                "data_type": "timestamp with time zone",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "financial_account",
+            "type": "integer",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": "related-values",
+                "display_options": {
+                    "template": "{{name}}"
+                },
+                "field": "financial_account",
+                "group": null,
+                "hidden": false,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 9,
+                "special": [
+                    "m2o"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "financial_account",
+                "table": "boxes",
+                "data_type": "integer",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": false,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "financial_accounts",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "goal",
+            "type": "integer",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "goal",
+                "group": null,
+                "hidden": false,
+                "interface": "input",
+                "note": null,
+                "options": {
+                    "min": 0
+                },
+                "readonly": false,
+                "required": true,
+                "sort": 7,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "goal",
+                "table": "boxes",
+                "data_type": "integer",
+                "default_value": 0,
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": false,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "id",
+            "type": "integer",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "id",
+                "group": null,
+                "hidden": true,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 1,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "id",
+                "table": "boxes",
+                "data_type": "integer",
+                "default_value": "nextval('boxes_id_seq'::regclass)",
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": false,
+                "is_unique": true,
+                "is_primary_key": true,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": true,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "name",
+            "type": "string",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "name",
+                "group": null,
+                "hidden": false,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 6,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "name",
+                "table": "boxes",
+                "data_type": "character varying",
+                "default_value": null,
+                "max_length": 255,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": false,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "user_created",
+            "type": "uuid",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": "user",
+                "display_options": null,
+                "field": "user_created",
+                "group": null,
+                "hidden": true,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": {
+                    "template": "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+                },
+                "readonly": true,
+                "required": false,
+                "sort": 2,
+                "special": [
+                    "user-created"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "user_created",
+                "table": "boxes",
+                "data_type": "uuid",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "user_updated",
+            "type": "uuid",
+            "meta": {
+                "collection": "boxes",
+                "conditions": null,
+                "display": "user",
+                "display_options": null,
+                "field": "user_updated",
+                "group": null,
+                "hidden": true,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": {
+                    "template": "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+                },
+                "readonly": true,
+                "required": false,
+                "sort": 4,
+                "special": [
+                    "user-updated"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "user_updated",
+                "table": "boxes",
+                "data_type": "uuid",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "code",
+            "type": "string",
+            "meta": {
+                "collection": "currency",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "code",
+                "group": null,
+                "hidden": false,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 7,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "code",
+                "table": "currency",
+                "data_type": "character varying",
+                "default_value": null,
+                "max_length": 255,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": false,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "date_created",
+            "type": "timestamp",
+            "meta": {
+                "collection": "currency",
+                "conditions": null,
+                "display": "datetime",
+                "display_options": {
+                    "relative": true
+                },
+                "field": "date_created",
+                "group": null,
+                "hidden": true,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 4,
+                "special": [
+                    "date-created"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "date_created",
+                "table": "currency",
+                "data_type": "timestamp with time zone",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "date_updated",
+            "type": "timestamp",
+            "meta": {
+                "collection": "currency",
+                "conditions": null,
+                "display": "datetime",
+                "display_options": {
+                    "relative": true
+                },
+                "field": "date_updated",
+                "group": null,
+                "hidden": true,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 6,
+                "special": [
+                    "date-updated"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "date_updated",
+                "table": "currency",
+                "data_type": "timestamp with time zone",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "decimals",
+            "type": "integer",
+            "meta": {
+                "collection": "currency",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "decimals",
+                "group": null,
+                "hidden": false,
+                "interface": "input",
+                "note": null,
+                "options": {
+                    "max": 6,
+                    "min": 0
+                },
+                "readonly": false,
+                "required": true,
+                "sort": 8,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "decimals",
+                "table": "currency",
+                "data_type": "integer",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": false,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "id",
+            "type": "integer",
+            "meta": {
+                "collection": "currency",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "id",
+                "group": null,
+                "hidden": true,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 1,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "id",
+                "table": "currency",
+                "data_type": "integer",
+                "default_value": "nextval('currency_id_seq'::regclass)",
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": false,
+                "is_unique": true,
+                "is_primary_key": true,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": true,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "user_created",
+            "type": "uuid",
+            "meta": {
+                "collection": "currency",
+                "conditions": null,
+                "display": "user",
+                "display_options": null,
+                "field": "user_created",
+                "group": null,
+                "hidden": true,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": {
+                    "template": "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+                },
+                "readonly": true,
+                "required": false,
+                "sort": 3,
+                "special": [
+                    "user-created"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "user_created",
+                "table": "currency",
+                "data_type": "uuid",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "user_updated",
+            "type": "uuid",
+            "meta": {
+                "collection": "currency",
+                "conditions": null,
+                "display": "user",
+                "display_options": null,
+                "field": "user_updated",
+                "group": null,
+                "hidden": true,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": {
+                    "template": "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+                },
+                "readonly": true,
+                "required": false,
+                "sort": 5,
+                "special": [
+                    "user-updated"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "user_updated",
+                "table": "currency",
+                "data_type": "uuid",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "currency",
+            "type": "integer",
+            "meta": {
+                "collection": "financial_accounts",
+                "conditions": null,
+                "display": "related-values",
+                "display_options": {
+                    "template": "{{code}}"
+                },
+                "field": "currency",
+                "group": null,
+                "hidden": false,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 8,
+                "special": [
+                    "m2o"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "currency",
+                "table": "financial_accounts",
+                "data_type": "integer",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "currency",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "date_created",
+            "type": "timestamp",
+            "meta": {
+                "collection": "financial_accounts",
+                "conditions": null,
+                "display": "datetime",
+                "display_options": {
+                    "relative": true
+                },
+                "field": "date_created",
+                "group": null,
+                "hidden": true,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 4,
+                "special": [
+                    "date-created"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "date_created",
+                "table": "financial_accounts",
+                "data_type": "timestamp with time zone",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "date_updated",
+            "type": "timestamp",
+            "meta": {
+                "collection": "financial_accounts",
+                "conditions": null,
+                "display": "datetime",
+                "display_options": {
+                    "relative": true
+                },
+                "field": "date_updated",
+                "group": null,
+                "hidden": true,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 6,
+                "special": [
+                    "date-updated"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "date_updated",
+                "table": "financial_accounts",
+                "data_type": "timestamp with time zone",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "id",
+            "type": "integer",
+            "meta": {
+                "collection": "financial_accounts",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "id",
+                "group": null,
+                "hidden": true,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 1,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "id",
+                "table": "financial_accounts",
+                "data_type": "integer",
+                "default_value": "nextval('financial_accounts_id_seq'::regclass)",
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": false,
+                "is_unique": true,
+                "is_primary_key": true,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": true,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "name",
+            "type": "string",
+            "meta": {
+                "collection": "financial_accounts",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "name",
+                "group": null,
+                "hidden": false,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 7,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "name",
+                "table": "financial_accounts",
+                "data_type": "character varying",
+                "default_value": null,
+                "max_length": 255,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": true,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "user_created",
+            "type": "uuid",
+            "meta": {
+                "collection": "financial_accounts",
+                "conditions": null,
+                "display": "user",
+                "display_options": null,
+                "field": "user_created",
+                "group": null,
+                "hidden": true,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": {
+                    "template": "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+                },
+                "readonly": true,
+                "required": false,
+                "sort": 3,
+                "special": [
+                    "user-created"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "user_created",
+                "table": "financial_accounts",
+                "data_type": "uuid",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "user_updated",
+            "type": "uuid",
+            "meta": {
+                "collection": "financial_accounts",
+                "conditions": null,
+                "display": "user",
+                "display_options": null,
+                "field": "user_updated",
+                "group": null,
+                "hidden": true,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": {
+                    "template": "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+                },
+                "readonly": true,
+                "required": false,
+                "sort": 5,
+                "special": [
+                    "user-updated"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "user_updated",
+                "table": "financial_accounts",
+                "data_type": "uuid",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "amount",
+            "type": "integer",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "amount",
+                "group": null,
+                "hidden": false,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 7,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "amount",
+                "table": "transactions",
+                "data_type": "integer",
+                "default_value": 0,
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "box",
+            "type": "integer",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": "related-values",
+                "display_options": {
+                    "template": "{{name}}"
+                },
+                "field": "box",
+                "group": null,
+                "hidden": false,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": false,
+                "sort": 8,
+                "special": [
+                    "m2o"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "box",
+                "table": "transactions",
+                "data_type": "integer",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "boxes",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "date",
+            "type": "date",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "date",
+                "group": null,
+                "hidden": false,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 10,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "date",
+                "table": "transactions",
+                "data_type": "date",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": false,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "date_created",
+            "type": "timestamp",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": "datetime",
+                "display_options": {
+                    "relative": true
+                },
+                "field": "date_created",
+                "group": null,
+                "hidden": true,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 3,
+                "special": [
+                    "date-created"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "date_created",
+                "table": "transactions",
+                "data_type": "timestamp with time zone",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "date_updated",
+            "type": "timestamp",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": "datetime",
+                "display_options": {
+                    "relative": true
+                },
+                "field": "date_updated",
+                "group": null,
+                "hidden": true,
+                "interface": "datetime",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 5,
+                "special": [
+                    "date-updated"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "date_updated",
+                "table": "transactions",
+                "data_type": "timestamp with time zone",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "financial_account",
+            "type": "integer",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": "related-values",
+                "display_options": {
+                    "template": "{{name}}"
+                },
+                "field": "financial_account",
+                "group": null,
+                "hidden": false,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 9,
+                "special": [
+                    "m2o"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "financial_account",
+                "table": "transactions",
+                "data_type": "integer",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "financial_accounts",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "id",
+            "type": "integer",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "id",
+                "group": null,
+                "hidden": true,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": true,
+                "required": false,
+                "sort": 1,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "id",
+                "table": "transactions",
+                "data_type": "integer",
+                "default_value": "nextval('transactions_id_seq'::regclass)",
+                "max_length": null,
+                "numeric_precision": 32,
+                "numeric_scale": 0,
+                "is_nullable": false,
+                "is_unique": true,
+                "is_primary_key": true,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": true,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "name",
+            "type": "string",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": null,
+                "display_options": null,
+                "field": "name",
+                "group": null,
+                "hidden": false,
+                "interface": "input",
+                "note": null,
+                "options": null,
+                "readonly": false,
+                "required": true,
+                "sort": 6,
+                "special": null,
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "full"
+            },
+            "schema": {
+                "name": "name",
+                "table": "transactions",
+                "data_type": "character varying",
+                "default_value": null,
+                "max_length": 255,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": false,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": null,
+                "foreign_key_column": null
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "user_created",
+            "type": "uuid",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": "user",
+                "display_options": null,
+                "field": "user_created",
+                "group": null,
+                "hidden": true,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": {
+                    "template": "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+                },
+                "readonly": true,
+                "required": false,
+                "sort": 2,
+                "special": [
+                    "user-created"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "user_created",
+                "table": "transactions",
+                "data_type": "uuid",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id"
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "user_updated",
+            "type": "uuid",
+            "meta": {
+                "collection": "transactions",
+                "conditions": null,
+                "display": "user",
+                "display_options": null,
+                "field": "user_updated",
+                "group": null,
+                "hidden": true,
+                "interface": "select-dropdown-m2o",
+                "note": null,
+                "options": {
+                    "template": "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+                },
+                "readonly": true,
+                "required": false,
+                "sort": 4,
+                "special": [
+                    "user-updated"
+                ],
+                "translations": null,
+                "validation": null,
+                "validation_message": null,
+                "width": "half"
+            },
+            "schema": {
+                "name": "user_updated",
+                "table": "transactions",
+                "data_type": "uuid",
+                "default_value": null,
+                "max_length": null,
+                "numeric_precision": null,
+                "numeric_scale": null,
+                "is_nullable": true,
+                "is_unique": false,
+                "is_primary_key": false,
+                "is_generated": false,
+                "generation_expression": null,
+                "has_auto_increment": false,
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id"
+            }
+        }
+    ],
+    "relations": [
+        {
+            "collection": "boxes",
+            "field": "financial_account",
+            "related_collection": "financial_accounts",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "boxes",
+                "many_field": "financial_account",
+                "one_allowed_collections": null,
+                "one_collection": "financial_accounts",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "boxes",
+                "column": "financial_account",
+                "foreign_key_table": "financial_accounts",
+                "foreign_key_column": "id",
+                "constraint_name": "boxes_financial_account_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "user_created",
+            "related_collection": "directus_users",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "boxes",
+                "many_field": "user_created",
+                "one_allowed_collections": null,
+                "one_collection": "directus_users",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "boxes",
+                "column": "user_created",
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id",
+                "constraint_name": "boxes_user_created_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        },
+        {
+            "collection": "boxes",
+            "field": "user_updated",
+            "related_collection": "directus_users",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "boxes",
+                "many_field": "user_updated",
+                "one_allowed_collections": null,
+                "one_collection": "directus_users",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "boxes",
+                "column": "user_updated",
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id",
+                "constraint_name": "boxes_user_updated_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "user_created",
+            "related_collection": "directus_users",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "currency",
+                "many_field": "user_created",
+                "one_allowed_collections": null,
+                "one_collection": "directus_users",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "currency",
+                "column": "user_created",
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id",
+                "constraint_name": "currency_user_created_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        },
+        {
+            "collection": "currency",
+            "field": "user_updated",
+            "related_collection": "directus_users",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "currency",
+                "many_field": "user_updated",
+                "one_allowed_collections": null,
+                "one_collection": "directus_users",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "currency",
+                "column": "user_updated",
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id",
+                "constraint_name": "currency_user_updated_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "currency",
+            "related_collection": "currency",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "financial_accounts",
+                "many_field": "currency",
+                "one_allowed_collections": null,
+                "one_collection": "currency",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "financial_accounts",
+                "column": "currency",
+                "foreign_key_table": "currency",
+                "foreign_key_column": "id",
+                "constraint_name": "financial_accounts_currency_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "SET NULL"
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "user_created",
+            "related_collection": "directus_users",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "financial_accounts",
+                "many_field": "user_created",
+                "one_allowed_collections": null,
+                "one_collection": "directus_users",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "financial_accounts",
+                "column": "user_created",
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id",
+                "constraint_name": "financial_accounts_user_created_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        },
+        {
+            "collection": "financial_accounts",
+            "field": "user_updated",
+            "related_collection": "directus_users",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "financial_accounts",
+                "many_field": "user_updated",
+                "one_allowed_collections": null,
+                "one_collection": "directus_users",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "financial_accounts",
+                "column": "user_updated",
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id",
+                "constraint_name": "financial_accounts_user_updated_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "box",
+            "related_collection": "boxes",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "transactions",
+                "many_field": "box",
+                "one_allowed_collections": null,
+                "one_collection": "boxes",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "transactions",
+                "column": "box",
+                "foreign_key_table": "boxes",
+                "foreign_key_column": "id",
+                "constraint_name": "transactions_box_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "SET NULL"
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "financial_account",
+            "related_collection": "financial_accounts",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "transactions",
+                "many_field": "financial_account",
+                "one_allowed_collections": null,
+                "one_collection": "financial_accounts",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "transactions",
+                "column": "financial_account",
+                "foreign_key_table": "financial_accounts",
+                "foreign_key_column": "id",
+                "constraint_name": "transactions_financial_account_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "SET NULL"
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "user_created",
+            "related_collection": "directus_users",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "transactions",
+                "many_field": "user_created",
+                "one_allowed_collections": null,
+                "one_collection": "directus_users",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "transactions",
+                "column": "user_created",
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id",
+                "constraint_name": "transactions_user_created_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        },
+        {
+            "collection": "transactions",
+            "field": "user_updated",
+            "related_collection": "directus_users",
+            "meta": {
+                "junction_field": null,
+                "many_collection": "transactions",
+                "many_field": "user_updated",
+                "one_allowed_collections": null,
+                "one_collection": "directus_users",
+                "one_collection_field": null,
+                "one_deselect_action": "nullify",
+                "one_field": null,
+                "sort_field": null
+            },
+            "schema": {
+                "table": "transactions",
+                "column": "user_updated",
+                "foreign_key_table": "directus_users",
+                "foreign_key_column": "id",
+                "constraint_name": "transactions_user_updated_foreign",
+                "on_update": "NO ACTION",
+                "on_delete": "NO ACTION"
+            }
+        }
+    ]
+}
