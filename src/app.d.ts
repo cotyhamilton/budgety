@@ -2,10 +2,18 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface Platform {}
+		interface Error {
+			id: string | undefined;
+		}
+		interface Locals {
+			access_token: string | undefined;
+			refresh_token: string | undefined;
+			trace: string | undefined;
+			logger: import("pino").Logger;
+			apiClient: import("$lib/server/api").ApiClient;
+		}
+		interface PageData {}
+		interface Platform {}
 	}
 }
 

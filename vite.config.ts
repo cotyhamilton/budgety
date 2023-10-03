@@ -7,6 +7,7 @@ export default defineConfig({
 		include: ["src/**/*.{test,spec}.{js,ts}"],
 		coverage: {
 			reporter: ["lcov", "text-summary"]
-		}
+		},
+		environment: "jsdom"
 	}
 });

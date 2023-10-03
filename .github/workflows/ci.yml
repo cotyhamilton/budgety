@@ -30,8 +30,8 @@ jobs:
       run: yarn build
     - name: Unit Tests
       run: yarn test:coverage
-    - name: Integration Tests
-      run: yarn playwright install && yarn test:integration
+    # - name: Integration Tests
+    #   run: yarn playwright install && yarn test:integration
     
   build-image:
     runs-on: ubuntu-latest

@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>budgety 💰</h1>
+
+<form method="POST">
+	<label>
+		email
+		<input name="email" type="email" />
+	</label>
+	<label>
+		password
+		<input name="password" type="password" />
+	</label>
+	<button>log in</button>
+</form>
