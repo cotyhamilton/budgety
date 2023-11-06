@@ -9,3 +9,5 @@
 !/package.json
 !/yarn.lock
 !/entrypoint.js
+!/postcss.config.cjs
+!/tailwind.config.js
