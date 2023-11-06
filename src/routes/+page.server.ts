@@ -1,37 +1,46 @@
-import { redirect } from "@sveltejs/kit";
-import type { Actions } from "./$types";
+import { redirect, fail } from "@sveltejs/kit";
+import type { Actions, PageServerLoad } from "./$types";
+import { setError, superValidate } from "sveltekit-superforms/server";
+import { formSchema } from "./schema";
+
+export const load: PageServerLoad = () => {
+	return {
+		form: superValidate(formSchema)
+	};
+};
 
 export const actions = {
 	default: async ({ cookies, request, url, locals }) => {
 		const { logger } = locals;
 		logger.debug("Login Started");
 
-		const data = await request.formData();
-		const email = data.get("email");
-		const password = data.get("password");
+		const form = await superValidate(request, formSchema);
+		if (!form.valid) {
+			return fail(400, {
+				form
+			});
+		}
+
+		const { email, password } = form.data;
 
 		let success = false;
 
-		// add zod
-		if (typeof email === "string" && typeof password === "string") {
+		try {
 			const { apiClient } = locals;
+			const { refresh_token } = await apiClient.login(email, password);
 
-			try {
-				const { refresh_token } = await apiClient.login(email, password);
+			if (refresh_token) {
+				cookies.set("refresh_token", refresh_token, {
+					path: "/",
+					httpOnly: true,
+					sameSite: "strict",
+					maxAge: 60 * 60 * 24 * 7 // make configurable
+				});
 
-				if (refresh_token) {
-					cookies.set("refresh_token", refresh_token, {
-						path: "/",
-						httpOnly: true,
-						sameSite: "strict",
-						maxAge: 60 * 60 * 24 * 7 // make configurable
-					});
-
-					success = true;
-				}
-			} catch (error) {
-				logger.debug({ error }, "Login Failed");
+				success = true;
 			}
+		} catch (error) {
+			logger.debug({ error }, "Login Failed");
 		}
 
 		if (success) {
@@ -47,5 +56,7 @@ export const actions = {
 		cookies.delete("refresh_token");
 
 		logger.debug("Login Finished");
+
+		return setError(form, "", "invalid email or password");
 	}
 } satisfies Actions;

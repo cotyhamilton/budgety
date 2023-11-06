@@ -8,7 +8,7 @@
 	<title>balances</title>
 </svelte:head>
 
-<h1>balances</h1>
+<h1 class="text-3xl my-5 font-bold">balances</h1>
 <pre>
 {JSON.stringify(data, null, 2)}
 </pre>

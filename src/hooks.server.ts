@@ -6,9 +6,18 @@ import { logHook } from "$lib/server/logger";
 export const handle = sequence(logHook, authHook);
 
 export const handleError: HandleServerError = async ({ error, event }) => {
-	event.locals.logger.error({
-		error
-	});
+	if (error instanceof Error) {
+		event.locals.logger.error({
+			error: {
+				...error,
+				stack: error?.stack
+			}
+		});
+	} else {
+		event.locals.logger.error({
+			error
+		});
+	}
 
 	return {
 		message: "Oops ... an error occurred",

@@ -11,6 +11,7 @@ declare global {
 			trace: string | undefined;
 			logger: import("pino").Logger;
 			apiClient: import("$lib/server/api").ApiClient;
+			financial_account: number;
 		}
 		interface PageData {}
 		interface Platform {}
