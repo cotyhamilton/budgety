@@ -9,7 +9,7 @@
 	export let data: PageData;
 
 	const { form } = data;
-	const { errors } = superForm(form);
+	const { errors } = superForm(form, { id: "errors" });
 
 	let isLoading = false;
 
@@ -31,15 +31,15 @@
 			<Form.Root method="POST" {form} schema={formSchema} let:config class="grid gap-6">
 				<Form.Field {config} name="email">
 					<Form.Item>
-						<Form.Label>email</Form.Label>
-						<Form.Input />
+						<Form.Label for="email">email</Form.Label>
+						<Form.Input id="email" />
 						<Form.Validation />
 					</Form.Item>
 				</Form.Field>
 				<Form.Field {config} name="password">
 					<Form.Item>
-						<Form.Label>password</Form.Label>
-						<Form.Input type="password" />
+						<Form.Label for="password">password</Form.Label>
+						<Form.Input id="password" type="password" />
 						<Form.Validation />
 					</Form.Item>
 				</Form.Field>

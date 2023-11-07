@@ -6,7 +6,12 @@ export default defineConfig({
 	test: {
 		include: ["src/**/*.{test,spec}.{js,ts}"],
 		coverage: {
-			reporter: ["lcov", "text-summary"]
+			reporter: ["lcov", "text-summary"],
+			reportsDirectory: "./test-results/coverage",
+		},
+		reporters: ["junit"],
+		outputFile: {
+			junit: "./test-results/junit-report.xml",
 		},
 		environment: "jsdom"
 	}
