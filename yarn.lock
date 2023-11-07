@@ -829,10 +829,10 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-bits-ui@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/bits-ui/-/bits-ui-0.9.0.tgz#3feed50f56f6dca5a43e9318829f62b04c7e3349"
-  integrity sha512-wEVWMnR4or4t8dY+UP+G4jVugzsfhMcuIrTOoJh8V6t/JcHWne/z1nnBA/yD1E1cn391IUurSatRkv7qTJXMww==
+bits-ui@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/bits-ui/-/bits-ui-0.9.1.tgz#48b32e8470e75c2a7068a56d75deeeb9547d1ad1"
+  integrity sha512-cpA2eMtPwBewEKWbouV9fAesha5xXBUC4bNpFmMtPPHgPqadtqu6TUk5Q2Ywi2a4lsQOYeNz7wJObPt7d9e+BA==
   dependencies:
     "@melt-ui/svelte" "0.57.2"
     nanoid "^5.0.2"
