@@ -33,16 +33,16 @@ jobs:
       run: yarn lint
     - name: Build
       run: yarn build
-    - name: Unit Tests
+    - name: Unit tests
       run: yarn test:coverage
-    - name: Setup Test Infrastructure
+    - name: Setup test infrastructure
       run: |
         docker compose up -d postgres directus
-    - name: E2E Tests
+    - name: E2E tests
       run: |
         yarn playwright install --with-deps
         yarn test:e2e
-    - name: Upload Test Results
+    - name: Upload test results
       uses: actions/upload-artifact@v3
       if: always()
       with:
@@ -57,6 +57,7 @@ jobs:
         sbom: true
         cache-from: type=gha
         cache-to: type=gha,mode=max
+      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
     - name: Auth ghcr.io
       uses: docker/login-action@v3
       with:
@@ -73,7 +74,7 @@ jobs:
         sbom: true
         push: true
       if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
-    - name: Create Release Pull Request
+    - name: Create release pull request
       uses: changesets/action@v1
       with:
         version: changeset version
