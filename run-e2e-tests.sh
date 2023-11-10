@@ -8,9 +8,6 @@ if [ ! -f /.dockerenv ]; then
     # build container image
     docker build -t budgety .
 
-    echo $DIRECTUS_EMAIL
-    echo $DIRECTUS_PASSWORD
-
     # run container
     docker compose up -d budgety
 fi
