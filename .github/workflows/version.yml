@@ -1,0 +1,28 @@
+name: Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone repo
+      uses: actions/checkout@v4
+    - name: Setup node 18
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.x
+        cache: 'yarn'
+    - name: Bump Version
+      run: |
+        set -e
+        git config user.name ${{ github.actor }}
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+        yarn
+        yarn beachball bump
+        NEXT_VERSION=$(node -e 'console.log(require("./package.json").version)')
+        git add .
+        git commit -m "$NEXT_VERSION"
+        git tag "$NEXT_VERSION"
+        git push --no-verify --follow-tags --verbose origin HEAD:main
