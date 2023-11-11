@@ -3,8 +3,8 @@
 	"version": "1.0.0-next.0",
 	"private": true,
   "repository": {
-    "type": "git",
-    "url": "https://github.com/cotyhamilton/budgety.git"
+		"type": "git",
+		"url": "https://github.com/cotyhamilton/budgety.git"
   },
 	"scripts": {
 		"dev": "LOG_LEVEL=debug vite dev | pino-pretty",
