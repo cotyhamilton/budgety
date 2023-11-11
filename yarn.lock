@@ -829,7 +829,7 @@ base64-js@^1.3.1:
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
-beachball@2.39.0:
+beachball@^2.39.0:
   version "2.39.0"
   resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.39.0.tgz#f18a8b7d1387eaadbb15a9ec8d4d804da5334aff"
   integrity sha512-YyhL16twP3sa0Pd+auXDzG2xqIPBLF+9GIsMEXMRpSjk9eYpzqSY/BOKbwzy+VqsUlQxWfVIFxijbUEQZYIwUQ==
