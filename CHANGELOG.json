@@ -1,0 +1,20 @@
+{
+  "name": "budgety",
+  "entries": [
+    {
+      "date": "Sat, 11 Nov 2023 23:16:10 GMT",
+      "version": "1.0.0-next.1",
+      "tag": "budgety_v1.0.0-next.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "cotyhamilton@gmail.com",
+            "package": "budgety",
+            "commit": "dd1fef7955ee3542f1609f64cd0a43fbd2d8caed",
+            "comment": "Nothing"
+          }
+        ]
+      }
+    }
+  ]
+}
