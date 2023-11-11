@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # create test results folder
 mkdir -p test-results/e2e
 

@@ -38,6 +38,7 @@ jobs:
       run: yarn test:coverage
     - name: E2E tests
       run: |
+        set -e
         docker compose up -d postgres directus
         yarn playwright install --with-deps
         yarn test:e2e
