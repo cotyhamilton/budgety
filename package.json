@@ -39,7 +39,7 @@
 		"jsdom": "^22.1.0",
 		"lucide-svelte": "^0.292.0",
 		"pino": "^8.15.1",
-		"pino-pretty": "^10.2.0",
+		"pino-pretty": "^10.2.3",
 		"postcss": "^8.4.31",
 		"postcss-load-config": "^4.0.1",
 		"prettier": "^2.8.0",
