@@ -33,6 +33,6 @@ jobs:
         echo "NEW_BRANCH=$NEW_BRANCH" >> $GITHUB_ENV
     - name: Create Pull Request
       run: |
-        gh pr create -B main -H $NEW_BRANCH --title 'Version $NEXT_VERSION'
+        gh pr create -B main -H $NEW_BRANCH --title "Version $NEXT_VERSION" --body "Bump version to $NEXT_VERSION"
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
