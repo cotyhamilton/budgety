@@ -3393,10 +3393,10 @@ svelte@^4.2.2:
     magic-string "^0.30.4"
     periscopic "^3.1.0"
 
-sveltekit-superforms@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/sveltekit-superforms/-/sveltekit-superforms-1.9.0.tgz#5ce570a009830f0c92172d580023bb199edee8f7"
-  integrity sha512-gd8/1umhc8yCtrt3TtzFOt51JvRCJPlsL5/0ElalwOF/Q0YjIm+gVOAdT0/xfvloMGfDQ7tBMaz8Y70zYD9s3w==
+sveltekit-superforms@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/sveltekit-superforms/-/sveltekit-superforms-1.10.1.tgz#dc523d82637428c31a12a401ef799e162277c020"
+  integrity sha512-xNRLuncJf7UoJSr543IpFRu5si2Vv7dd8lsc6w1MAodGcIvDFn76T6jF/idftos7Vt/OOi3btFsvrJvT99n4dg==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
