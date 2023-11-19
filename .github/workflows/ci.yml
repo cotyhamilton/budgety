@@ -29,37 +29,28 @@ jobs:
       with:
         node-version: 18.x
         cache: 'yarn'
-    # - name: Install dependencies
-    #   run: yarn install --immutable
-    # - name: Lint
-    #   run: yarn lint
-    # - name: Build
-    #   run: yarn build
-    # - name: Unit tests
-    #   run: yarn test:coverage
-    # - name: Install E2E Test Dependencies
-    #   run: yarn playwright install --with-deps
-    # - name: E2E tests
-    #   run: yarn test:e2e
-    # - name: Upload test results
-    #   uses: actions/upload-artifact@v3
-    #   if: always()
-    #   with:
-    #     name: test-results
-    #     path: test-results/
-    # - name: Build image
-    #   run: |
-    #     docker buildx build --sbom=true --output=type=oci --quiet -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} . | docker load
-    - name: Build image
-      uses: docker/build-push-action@v5
+    - name: Install dependencies
+      run: yarn install --immutable
+    - name: Lint
+      run: yarn lint
+    - name: Build
+      run: yarn build
+    - name: Unit tests
+      run: yarn test:coverage
+    - name: Install E2E Test Dependencies
+      run: yarn playwright install --with-deps
+    - name: E2E tests
+      run: yarn test:e2e
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
       with:
-        context: .
-        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        # sbom: true
-        load: true
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-    - name: Sanity Check Container
+        name: test-results
+        path: test-results/
+    - name: Build image
+      run: |
+        docker buildx build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
+    - name: Container Sanity Check
       run: |
         docker run -d -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         curl http://localhost | grep -q budgety
