@@ -55,7 +55,7 @@ jobs:
       with:
         context: .
         tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        sbom: true
+        # sbom: true
         load: true
         cache-from: type=gha
         cache-to: type=gha,mode=max
