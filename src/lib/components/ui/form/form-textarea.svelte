@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { Textarea, type TextareaEvents } from "$lib/components/ui/textarea";
 	import { getFormField } from "formsnap";
 	import type { HTMLTextareaAttributes } from "svelte/elements";
 	import type { TextareaGetFormField } from ".";
-	import { Textarea, type TextareaEvents } from "$lib/components/ui/textarea";
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	type $$Props = HTMLTextareaAttributes;

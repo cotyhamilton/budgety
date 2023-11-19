@@ -2,10 +2,9 @@ import { devices, type PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
 	webServer: {
-		command: "yarn build && yarn preview --port 3000",
-		port: 3000,
-		timeout: 2 * 60 * 1000,
-		reuseExistingServer: true,
+		command: "yarn build && yarn preview",
+		port: 4173,
+		reuseExistingServer: !process.env.CI,
 	},
 	testDir: "tests",
 	outputDir: "playwright",

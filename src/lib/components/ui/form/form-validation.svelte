@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Form as FormPrimitive } from "formsnap";
 	import { cn } from "$lib/utils";
+	import { Form as FormPrimitive } from "formsnap";
 	import type { HTMLAttributes } from "svelte/elements";
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars

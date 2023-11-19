@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 
-	const routes = ["boxes", "transactions", "accounts", "balances"];
+	const routes = ["boxes", "transactions", "accounts"];
 </script>
 
 <nav class="flex items-center justify-between my-6">

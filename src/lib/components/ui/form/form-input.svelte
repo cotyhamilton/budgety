@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { Input, type InputEvents } from "$lib/components/ui/input";
 	import { getFormField } from "formsnap";
 	import type { HTMLInputAttributes } from "svelte/elements";
-	import { Input, type InputEvents } from "$lib/components/ui/input";
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	type $$Props = HTMLInputAttributes;
