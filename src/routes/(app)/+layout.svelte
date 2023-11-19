@@ -3,8 +3,8 @@
 	import { Separator } from "$lib/components/ui/separator";
 	import { accounts } from "$lib/stores/account";
 	import { onMount } from "svelte";
-	import AccountNavigation from "./AccountNavigation.svelte";
-	import Navigation from "./Navigation.svelte";
+	import AccountNavigation from "./account-navigation.svelte";
+	import Navigation from "./navigation.svelte";
 
 	onMount(async () => {
 		// send user to create account if none found
