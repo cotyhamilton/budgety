@@ -63,10 +63,10 @@ jobs:
       if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
     - name: Push prerelease image
       run: |
-        docker buildx build --sbom true --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:next --push .
+        docker buildx build --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:next --push .
       if: github.ref == 'refs/heads/main'
     - name: Push release image
       run: |
-        docker buildx build --sbom true --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest --push .
-        docker buildx build --sbom true --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }} --push .
+        docker buildx build --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest --push .
+        docker buildx build --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }} --push .
       if: startsWith(github.ref, 'refs/tags/')
