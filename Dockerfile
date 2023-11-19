@@ -8,6 +8,6 @@ COPY . .
 RUN yarn build
 
 # Runtime
-FROM nginx:alpine
+FROM nginxinc/nginx-unprivileged:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build /usr/share/nginx/html
