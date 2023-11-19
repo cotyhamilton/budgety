@@ -24,7 +24,7 @@
 		"@playwright/test": "^1.28.1",
 		"@square/svelte-store": "^1.0.17",
 		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.25.1",
+		"@sveltejs/kit": "^1.27.6",
 		"@testing-library/svelte": "^4.0.5",
 		"@typescript-eslint/eslint-plugin": "^6.11.0",
 		"@typescript-eslint/parser": "^6.9.1",
