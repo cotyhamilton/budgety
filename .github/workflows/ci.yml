@@ -49,7 +49,7 @@ jobs:
         path: test-results/
     - name: Build image
       run: |
-        docker buildx build --sbom=true --output=type=oci -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} . | docker load
+        docker buildx build --sbom=true --output=type=oci --quiet -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} . | docker load
     - name: Sanity Check Container
       run: |
         docker run -d -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
