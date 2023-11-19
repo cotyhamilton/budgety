@@ -48,8 +48,13 @@ jobs:
         name: test-results
         path: test-results/
     - name: Build image
-      run: |
-        docker buildx build --load -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        load: true
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
     - name: Container Sanity Check
       run: |
         docker run -d -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
@@ -60,13 +65,23 @@ jobs:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-      if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || startsWith(github.ref, 'refs/tags/')
-    - name: Push prerelease image
-      run: |
-        docker buildx build --sbom true --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:next --push .
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    - name: Push release image
-      run: |
-        docker buildx build --sbom true --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest --push .
-        docker buildx build --sbom true --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }} --push .
+      if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+    - name: Push Prerelease Image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        tags: |
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:next
+        sbom: true
+        push: true
+      if: github.ref == 'refs/heads/main'
+    - name: Push Release Image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        tags: |
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
+        sbom: true
+        push: true
       if: startsWith(github.ref, 'refs/tags/')
