@@ -18,7 +18,7 @@
 
 {#if $accounts.length}
 	<Navigation />
-	<AccountNavigation safeToSpend={40} />
+	<AccountNavigation />
 	<Separator class="my-4" />
 {/if}
 
