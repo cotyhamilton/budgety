@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { Separator } from "$lib/components/ui/separator";
-
-	export let account: string;
-	export let safeToSpend: number;
+	import { currentAccount } from "$lib/stores/account";
 </script>
 
 <div class="flex h-5 items-center space-x-4">
-	<h2 class="text-xl font-bold">{account}</h2>
+	<h2 class="text-xl font-bold">{$currentAccount?.name}</h2>
 	<Separator orientation="vertical" />
-	<p>safe-to-spend: ${safeToSpend}.00</p>
+	<p>safe-to-spend: $1 billion</p>
 </div>

@@ -7,7 +7,8 @@ module.exports = {
 		"prettier"
 	],
 	parser: "@typescript-eslint/parser",
-	plugins: ["@typescript-eslint"],
+	plugins: ["@typescript-eslint", "square-svelte-store"],
+	rules: { "square-svelte-store/use-square-svelte-stores": "error" },
 	parserOptions: {
 		sourceType: "module",
 		ecmaVersion: 2020,

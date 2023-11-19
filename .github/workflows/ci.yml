@@ -15,9 +15,6 @@ env:
 jobs:
   ci:
     runs-on: ubuntu-latest
-    env:
-      DIRECTUS_EMAIL: admin@local.com
-      DIRECTUS_PASSWORD: adminpassword
     steps:
     - name: Clone repo
       uses: actions/checkout@v4
@@ -37,11 +34,7 @@ jobs:
     - name: Unit tests
       run: yarn test:coverage
     - name: E2E tests
-      run: |
-        set -e
-        docker compose up -d postgres directus
-        yarn playwright install --with-deps
-        yarn test:e2e
+      run: yarn test:e2e
     - name: Upload test results
       uses: actions/upload-artifact@v3
       if: always()
@@ -51,6 +44,10 @@ jobs:
     - name: Build image
       run: |
         docker buildx build --sbom=true -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
+    - name: Sanity Check Container
+      run: |
+        docker run -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        curl http://localhost | grep -q budgety
     - name: Auth ghcr.io
       uses: docker/login-action@v3
       with:
