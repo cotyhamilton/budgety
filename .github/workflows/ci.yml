@@ -48,7 +48,7 @@ jobs:
         docker buildx build --sbom=true -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
     - name: Sanity Check Container
       run: |
-        docker run -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        docker run -d -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         curl http://localhost | grep -q budgety
     - name: Auth ghcr.io
       uses: docker/login-action@v3
