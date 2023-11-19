@@ -49,7 +49,7 @@ jobs:
         path: test-results/
     - name: Build image
       run: |
-        docker buildx build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
+        docker buildx build --load -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
     - name: Container sanity check
       run: |
         docker run -d -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} && sleep 10
