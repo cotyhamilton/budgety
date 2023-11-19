@@ -33,6 +33,8 @@ jobs:
       run: yarn build
     - name: Unit tests
       run: yarn test:coverage
+    - name: Install E2E Test Dependencies
+      run: yarn playwright install --with-deps
     - name: E2E tests
       run: yarn test:e2e
     - name: Upload test results
