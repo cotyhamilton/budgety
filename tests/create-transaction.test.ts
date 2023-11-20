@@ -7,6 +7,8 @@ test("can create transaction", async ({ page }) => {
 	await page.getByPlaceholder("capital one").fill("capital one");
 	await page.getByRole("combobox").click();
 	await page.getByRole("option", { name: "USD" }).click();
+	await page.getByLabel("current balance").click();
+	await page.getByLabel("current balance").fill("1000");
 	await page.getByRole("button", { name: "save" }).click();
 	await page.getByRole("link", { name: "transactions" }).click();
 	await page.getByText("add transaction").click();

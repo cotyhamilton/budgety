@@ -4,13 +4,14 @@
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
 	import * as Select from "$lib/components/ui/select";
-	import { currencies } from "$lib/currencies";
+	import { convertToSubunits, currencies } from "$lib/currencies";
 	import { getDatabase } from "$lib/db";
 	import { financialAccount } from "$lib/models/financialAccount";
 	import { accounts, currentAccount } from "$lib/stores/account";
 
 	let name: string;
 	let currencyCode: string;
+	let balance: number;
 
 	// update currency code when selected
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,6 +24,7 @@
 		await financialAccount.createFinancialAccount(
 			await getDatabase(),
 			name,
+			convertToSubunits(balance, currencies[currencyCode].decimals),
 			currencyCode,
 			currencies[currencyCode].decimals
 		);
@@ -55,14 +57,26 @@
 				</Select.Trigger>
 				<Select.Content>
 					<Select.Group>
-						<Select.Label>currency</Select.Label>
 						{#each Object.entries(currencies) as [key]}
 							<Select.Item value={key}>{key}</Select.Item>
 						{/each}
 					</Select.Group>
 				</Select.Content>
-				<Select.Input name="currency-code" bind:value={currencyCode} />
+				<Select.Input id="currency" name="currency-code" bind:value={currencyCode} />
 			</Select.Root>
+			<Label for="balance">current balance</Label>
+			<div class="relative mt-2">
+				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+					<span class="text-gray-500">{currencies[currencyCode]?.symbol || "?"}</span>
+				</div>
+				<Input
+					class="pl-7"
+					disabled={!currencyCode}
+					type="number"
+					id="balance"
+					bind:value={balance}
+				/>
+			</div>
 			<Button disabled={!(name && currencyCode)} on:click={saveAccount}>save</Button>
 		</div>
 	</div>
