@@ -1,13 +1,8 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
-test("can create box", async ({ page }) => {
-	await page.goto("http://localhost:4173/");
-	await page.getByRole("button", { name: "log in" }).click();
-	await page.getByPlaceholder("capital one").click();
-	await page.getByPlaceholder("capital one").fill("capital one");
-	await page.getByRole("combobox").click();
-	await page.getByRole("option", { name: "USD" }).click();
-	await page.getByRole("button", { name: "save" }).click();
+test("can create box", async ({ page, navigation }) => {
+	await navigation.createAccount();
+
 	await page.getByRole("link", { name: "boxes" }).click();
 	await page.getByText("add box").click();
 	await page.locator("#name").fill("coffee");

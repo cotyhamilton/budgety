@@ -8,20 +8,14 @@ export type Box = {
 	name: string;
 };
 
-export type Currency = {
-	code: string;
-	date_created?: string | null;
-	date_updated?: string | null;
-	decimals: number;
-	id: number;
-};
-
 export type FinancialAccount = {
-	currency?: number | Currency | null;
-	date_created?: string | null;
-	date_updated?: string | null;
 	id: number;
 	name?: string | null;
+	balance: number;
+	currency_code: string;
+	currency_decimals: number;
+	date_created?: string | null;
+	date_updated?: string | null;
 };
 
 export type Transaction = {

@@ -4,12 +4,13 @@ import type { DB } from "@vlcn.io/crsqlite-wasm";
 const createFinancialAccount = async (
 	db: DB,
 	name: string,
+	balance: number,
 	currencyCode: string,
 	currencyDecimals: number
 ) => {
 	await db.exec(
-		"INSERT INTO financial_accounts (name, currency_code, currency_decimals) VALUES (?, ?, ?);",
-		[name, currencyCode, currencyDecimals]
+		"INSERT INTO financial_accounts (name, balance, currency_code, currency_decimals) VALUES (?, ?, ?, ?);",
+		[name, balance, currencyCode, currencyDecimals]
 	);
 };
 
