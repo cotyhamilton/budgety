@@ -7,6 +7,7 @@
 	import { convertToSubunits, currencies } from "$lib/currencies";
 	import { getDatabase } from "$lib/db";
 	import { financialAccount } from "$lib/models/financialAccount";
+	import { transaction } from "$lib/models/transaction";
 	import { accounts, currentAccount } from "$lib/stores/account";
 
 	let name: string;
@@ -24,7 +25,6 @@
 		await financialAccount.createFinancialAccount(
 			await getDatabase(),
 			name,
-			convertToSubunits(balance, currencies[currencyCode].decimals),
 			currencyCode,
 			currencies[currencyCode].decimals
 		);
@@ -32,6 +32,17 @@
 		await accounts.reload?.();
 		// save new account as current account
 		$currentAccount = $accounts[0];
+		// create initial transaction
+		await transaction.createTransaction(
+			await getDatabase(),
+			"starting balance",
+			convertToSubunits(balance, $currentAccount.currency_decimals),
+			0,
+			$currentAccount.id,
+			2023,
+			11,
+			29
+		);
 		goto("/accounts");
 	};
 </script>

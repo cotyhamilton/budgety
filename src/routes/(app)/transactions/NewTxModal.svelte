@@ -3,6 +3,7 @@
 	import * as Dialog from "$lib/components/ui/dialog";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
+	import { convertToSubunits } from "$lib/currencies";
 	import { getDatabase } from "$lib/db";
 	import { transaction } from "$lib/models/transaction";
 	import { currentAccount } from "$lib/stores/account";
@@ -17,7 +18,7 @@
 		transaction.createTransaction(
 			await getDatabase(),
 			name,
-			amount,
+			convertToSubunits(amount, $currentAccount.currency_decimals),
 			1,
 			$currentAccount.id,
 			2023,

@@ -4,19 +4,17 @@ import type { DB } from "@vlcn.io/crsqlite-wasm";
 const createFinancialAccount = async (
 	db: DB,
 	name: string,
-	balance: number,
 	currencyCode: string,
 	currencyDecimals: number
 ) => {
 	await db.exec(
-		"INSERT INTO financial_accounts (name, balance, currency_code, currency_decimals) VALUES (?, ?, ?, ?);",
-		[name, balance, currencyCode, currencyDecimals]
+		"INSERT INTO financial_accounts (name, currency_code, currency_decimals) VALUES (?, ?, ?);",
+		[name, currencyCode, currencyDecimals]
 	);
 };
 
 const getFinancialAccounts = async (db: DB): Promise<FinancialAccount[]> => {
-	const result = await db.execO<FinancialAccount>("SELECT * FROM financial_accounts;");
-	return result;
+	return await db.execO<FinancialAccount>("SELECT * FROM financial_accounts;");
 };
 
 const getFinancialAccountById = async (db: DB, id: number) => {
@@ -27,8 +25,21 @@ const getFinancialAccountById = async (db: DB, id: number) => {
 	return result.length > 0 ? result[0] : undefined;
 };
 
+export const getBalanceForAccountId = async (db: DB, id: number) => {
+	const result = await db.execO<{ balance: number }>(
+		`
+		SELECT SUM(amount) AS balance
+		FROM transactions
+		WHERE financial_account = ?
+	`,
+		[id]
+	);
+	return result[0];
+};
+
 export const financialAccount = {
 	createFinancialAccount,
 	getFinancialAccounts,
-	getFinancialAccountById
+	getFinancialAccountById,
+	getBalanceForAccountId
 };
