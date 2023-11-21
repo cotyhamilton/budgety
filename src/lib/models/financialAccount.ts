@@ -26,17 +26,20 @@ const getFinancialAccountById = async (db: DB, id: number) => {
 };
 
 export const getBalanceForAccountId = async (db: DB, id: number) => {
-	const result = await db.execO<{ balance: number }>(`
+	const result = await db.execO<{ balance: number }>(
+		`
 		SELECT SUM(amount) AS balance
 		FROM transactions
 		WHERE financial_account = ?
-	`, [id]);
+	`,
+		[id]
+	);
 	return result[0];
-}
+};
 
 export const financialAccount = {
 	createFinancialAccount,
 	getFinancialAccounts,
 	getFinancialAccountById,
-	getBalanceForAccountId,
+	getBalanceForAccountId
 };
