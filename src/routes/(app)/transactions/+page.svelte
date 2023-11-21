@@ -1,15 +1,9 @@
 <script lang="ts">
 	import * as Card from "$lib/components/ui/card";
+	import { convertFromSubunits, formatter } from "$lib/currencies";
+	import { currentAccount } from "$lib/stores/account";
 	import { transactions } from "$lib/stores/transaction";
 	import NewTxModal from "./NewTxModal.svelte";
-
-	// let transactions: Transaction[] = [];
-
-	// onMount(async () => {
-	// 	const db = await getDatabase();
-	// 	transaction.createTransaction(db, "Starbucks", 500, 1, 1, 2023, 11, 4);
-	// 	transactions = await transaction.getTransactions(db);
-	// });
 </script>
 
 <svelte:head>
@@ -28,7 +22,11 @@
 		<Card.Root class="my-2">
 			<Card.Header>
 				<Card.Title>{transaction.name}</Card.Title>
-				<Card.Description>{transaction.amount}</Card.Description>
+				<Card.Description
+					>{formatter($currentAccount?.currency_code).format(
+						convertFromSubunits(transaction?.amount, $currentAccount?.currency_decimals)
+					)}</Card.Description
+				>
 			</Card.Header>
 		</Card.Root>
 	{/each}

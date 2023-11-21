@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS boxes (
 CREATE TABLE IF NOT EXISTS financial_accounts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
-    balance INTEGER,
     currency_code TEXT,
     currency_decimals INTEGER,
     date_created DATETIME DEFAULT CURRENT_TIMESTAMP,

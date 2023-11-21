@@ -11,7 +11,6 @@ export type Box = {
 export type FinancialAccount = {
 	id: number;
 	name?: string | null;
-	balance: number;
 	currency_code: string;
 	currency_decimals: number;
 	date_created?: string | null;
@@ -19,7 +18,7 @@ export type FinancialAccount = {
 };
 
 export type Transaction = {
-	amount?: number | null;
+	amount: number;
 	box?: number | Box | null;
 	year: number;
 	month: number;

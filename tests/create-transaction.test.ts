@@ -8,8 +8,8 @@ test("can create transaction", async ({ page, navigation }) => {
 	await page.locator("#name").click();
 	await page.locator("#name").fill("starbucks");
 	await page.locator("#amount").click();
-	await page.locator("#amount").fill("800");
+	await page.locator("#amount").fill("8.23");
 	await page.getByRole("button", { name: "Save changes" }).click();
 
-	await expect(page.getByText("starbucks 800")).toBeVisible();
+	await expect(page.getByText("starbucks $8.23")).toBeVisible();
 });

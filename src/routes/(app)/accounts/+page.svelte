@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
 	import * as Card from "$lib/components/ui/card";
-	import { convertFromSubunits, formatter } from "$lib/currencies";
-	import { accounts } from "$lib/stores/account";
+	import { accounts, currentBalance } from "$lib/stores/account";
 	import { PlusCircled } from "radix-icons-svelte";
 </script>
 
@@ -25,11 +24,7 @@
 		<Card.Root class="my-2">
 			<Card.Header>
 				<Card.Title>{financialAccount.name}</Card.Title>
-				<Card.Description
-					>{formatter(financialAccount.currency_code).format(
-						convertFromSubunits(financialAccount.balance, financialAccount.currency_decimals)
-					)}</Card.Description
-				>
+				<Card.Description>{$currentBalance?.formatted}</Card.Description>
 			</Card.Header>
 		</Card.Root>
 	{/each}
