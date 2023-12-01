@@ -3,6 +3,7 @@ import { getDatabase } from "$lib/db";
 import { financialAccount, getBalanceForAccountId } from "$lib/models/financialAccount";
 import type { FinancialAccount } from "$lib/types";
 import { asyncDerived, asyncReadable, writable } from "@square/svelte-store";
+import { transactions } from "./transaction";
 
 export const currentAccount = writable<FinancialAccount>();
 
@@ -15,7 +16,7 @@ export const accounts = asyncReadable<FinancialAccount[]>(
 );
 
 export const currentBalance = asyncDerived(
-	[currentAccount],
+	[currentAccount, transactions],
 	async ([$currentAccount]) => {
 		const { balance } = await getBalanceForAccountId(await getDatabase(), $currentAccount.id);
 		const formatted = formatter($currentAccount?.currency_code).format(
