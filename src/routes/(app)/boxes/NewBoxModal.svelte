@@ -3,6 +3,7 @@
 	import * as Dialog from "$lib/components/ui/dialog";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
+	import { convertToSubunits } from "$lib/currencies";
 	import { getDatabase } from "$lib/db";
 	import { box } from "$lib/models/box";
 	import { currentAccount } from "$lib/stores/account";
@@ -14,7 +15,13 @@
 	let open: boolean;
 
 	const saveBox = async () => {
-		box.createBox(await getDatabase(), name, 0, goal, $currentAccount.id);
+		box.createBox(
+			await getDatabase(),
+			name,
+			0,
+			convertToSubunits(goal, $currentAccount.currency_decimals),
+			$currentAccount.id
+		);
 		boxes.reload?.();
 		name = "";
 		goal = 0;

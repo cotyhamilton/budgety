@@ -37,7 +37,7 @@
 			await getDatabase(),
 			"starting balance",
 			convertToSubunits(balance, $currentAccount.currency_decimals),
-			0,
+			null,
 			$currentAccount.id,
 			2023,
 			11,
