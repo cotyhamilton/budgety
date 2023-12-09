@@ -42,7 +42,7 @@
 		"jsdom": "^23.0.1",
 		"lucide-svelte": "^0.294.0",
 		"postcss": "^8.4.32",
-		"postcss-load-config": "^4.0.2",
+		"postcss-load-config": "^5.0.2",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.10.1",
 		"radix-icons-svelte": "^1.2.1",
