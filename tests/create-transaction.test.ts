@@ -11,5 +11,5 @@ test("can create transaction", async ({ page, navigation }) => {
 	await page.locator("#amount").fill("8.23");
 	await page.getByRole("button", { name: "Save changes" }).click();
 
-	await expect(page.getByText("starbucks $8.23")).toBeVisible();
+	await expect(page.getByText("starbucks$8.23")).toBeVisible();
 });

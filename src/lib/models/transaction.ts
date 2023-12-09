@@ -5,7 +5,7 @@ const createTransaction = async (
 	db: DB,
 	name: string,
 	amount: number | null,
-	box: number,
+	box: number | null,
 	financialAccount: number,
 	year: number,
 	month: number,

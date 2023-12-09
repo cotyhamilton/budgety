@@ -1,5 +1,7 @@
 <script lang="ts">
 	import * as Card from "$lib/components/ui/card";
+	import { convertFromSubunits, formatter } from "$lib/currencies";
+	import { currentAccount } from "$lib/stores/account";
 	import { boxes } from "$lib/stores/boxes";
 	import NewBoxModal from "./NewBoxModal.svelte";
 </script>
@@ -20,7 +22,13 @@
 		<Card.Root class="my-2">
 			<Card.Header>
 				<Card.Title>{box.name}</Card.Title>
-				<Card.Description>{box.balance} / {box.goal}</Card.Description>
+				<Card.Description
+					>{formatter($currentAccount?.currency_code).format(
+						convertFromSubunits(box?.balance, $currentAccount?.currency_decimals)
+					)} / {formatter($currentAccount?.currency_code).format(
+						convertFromSubunits(box?.goal, $currentAccount?.currency_decimals)
+					)}</Card.Description
+				>
 			</Card.Header>
 		</Card.Root>
 	{/each}
