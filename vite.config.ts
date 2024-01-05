@@ -8,8 +8,15 @@ export default defineConfig({
 		coverage: {
 			reporter: ["lcov", "text-summary"],
 			reportsDirectory: "./test-results/coverage",
+			include: ["src/**"],
+			exclude: [
+				"src/lib/components/ui/**",
+				"src/lib/utils.ts",
+				"**/*types.ts",
+				"**/*.d.ts"
+			]
 		},
-		reporters: ["junit"],
+		reporters: ["junit", process.env.CI ? "dot" : "default"],
 		outputFile: {
 			junit: "./test-results/junit-report.xml",
 		},
