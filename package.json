@@ -23,8 +23,9 @@
 	"devDependencies": {
 		"@playwright/test": "^1.40.1",
 		"@square/svelte-store": "^1.0.17",
-		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.27.6",
+		"@sveltejs/adapter-static": "^3.0.0",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@testing-library/svelte": "^4.0.5",
 		"@typescript-eslint/eslint-plugin": "^6.16.0",
 		"@typescript-eslint/parser": "^6.16.0",
@@ -54,7 +55,7 @@
 		"tailwindcss": "^3.4.0",
 		"tslib": "^2.4.1",
 		"typescript": "^5.3.3",
-		"vite": "^4.5.1",
+		"vite": "^5.0.0",
 		"vitest": "^1.1.1"
 	},
 	"type": "module",
