@@ -16,7 +16,9 @@ export const applyMigrations = async (db: DB) => {
 };
 
 export const createDatabase = async () => {
-	const sqlite = await initWasm(() => wasmUrl);
+	const url =
+		process.env.NODE_ENV === "test" ? "https://esm.sh/@vlcn.io/crsqlite-wasm@0.16.0" : wasmUrl;
+	const sqlite = await initWasm(() => url);
 	db = await sqlite.open(":memory:");
 	await applyMigrations(db);
 };
