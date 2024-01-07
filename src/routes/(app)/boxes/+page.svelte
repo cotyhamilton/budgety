@@ -23,10 +23,10 @@
 			<Card.Header>
 				<Card.Title>{box.name}</Card.Title>
 				<Card.Description
-					>{formatter($currentAccount?.currency_code).format(
-						convertFromSubunits(box?.balance, $currentAccount?.currency_decimals)
-					)} / {formatter($currentAccount?.currency_code).format(
-						convertFromSubunits(box?.goal, $currentAccount?.currency_decimals)
+					>{formatter($currentAccount?.currencyCode).format(
+						convertFromSubunits(box?.balance, $currentAccount?.currencyDecimals)
+					)} / {formatter($currentAccount?.currencyCode).format(
+						convertFromSubunits(box?.goal, $currentAccount?.currencyDecimals)
 					)}</Card.Description
 				>
 			</Card.Header>

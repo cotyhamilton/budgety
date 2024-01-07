@@ -4,10 +4,10 @@ import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 export const financialAccounts = sqliteTable("financial_accounts", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
 	name: text("name").notNull().unique(),
-	currency_code: text("currency_code").notNull().unique(),
-	currency_decimals: integer("currency_decimals").notNull(),
-	date_created: text("date_created").default(sql`CURRENT_TIMESTAMP`),
-	date_updated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
+	currencyCode: text("currency_code").notNull().unique(),
+	currencyDecimals: integer("currency_decimals").notNull(),
+	dateCreated: text("date_created").default(sql`CURRENT_TIMESTAMP`),
+	dateUpdated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const boxes = sqliteTable("boxes", {
@@ -15,11 +15,11 @@ export const boxes = sqliteTable("boxes", {
 	name: text("name").notNull(),
 	balance: integer("balance").notNull(),
 	goal: integer("goal").notNull(),
-	financial_account: integer("financial_account")
+	financialAccount: integer("financial_account")
 		.notNull()
 		.references(() => financialAccounts.id),
-	date_created: text("date_created").default(sql`CURRENT_TIMESTAMP`),
-	date_updated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
+	dateCreated: text("date_created").default(sql`CURRENT_TIMESTAMP`),
+	dateUpdated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const transactions = sqliteTable(
@@ -29,12 +29,12 @@ export const transactions = sqliteTable(
 		name: text("name").notNull().unique(),
 		amount: integer("amount").notNull(),
 		box: integer("box").references(() => boxes.id),
-		financial_account: integer("financial_account").references(() => financialAccounts.id),
+		financialAccount: integer("financial_account").references(() => financialAccounts.id),
 		year: integer("year").notNull(),
 		month: integer("month").notNull(),
 		day: integer("day").notNull(),
-		date_created: text("date_created").default(sql`CURRENT_TIMESTAMP`),
-		date_updated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
+		dateCreated: text("date_created").default(sql`CURRENT_TIMESTAMP`),
+		dateUpdated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => ({
 		amountIdx: index("amount_index").on(table.amount)

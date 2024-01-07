@@ -7,9 +7,7 @@ const createFinancialAccount = async (
 	currencyCode: string,
 	currencyDecimals: number
 ) => {
-	await db
-		.insert(financialAccounts)
-		.values([{ name, currency_code: currencyCode, currency_decimals: currencyDecimals }]);
+	await db.insert(financialAccounts).values([{ name, currencyCode, currencyDecimals }]);
 };
 
 const getFinancialAccounts = async () => {
@@ -26,16 +24,8 @@ export const getBalanceForAccountId = async (id: number) => {
 	const result = await db
 		.select({ balance: sum(transactions.amount) })
 		.from(transactions)
-		.where(eq(transactions.financial_account, id));
+		.where(eq(transactions.financialAccount, id));
 
-	// const result = await db.execO<{ balance: number }>(
-	// 	`
-	// 	SELECT SUM(amount) AS balance
-	// 	FROM transactions
-	// 	WHERE financial_account = ?
-	// 	`,
-	// 	[id]
-	// );
 	return result[0];
 };
 

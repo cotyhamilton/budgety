@@ -25,7 +25,7 @@
 	const saveTransaction = async () => {
 		transaction.createTransaction(
 			name,
-			convertToSubunits(amount, $currentAccount.currency_decimals),
+			convertToSubunits(amount, $currentAccount.currencyDecimals),
 			box ?? null,
 			$currentAccount.id,
 			2023,

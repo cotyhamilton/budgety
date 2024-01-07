@@ -4,16 +4,14 @@ import { transactions } from "../db/schema";
 
 const createTransaction = async (
 	name: string,
-	amount: number | null,
+	amount: number,
 	box: number | null,
 	financialAccount: number,
 	year: number,
 	month: number,
 	day: number
 ): Promise<void> => {
-	await db
-		.insert(transactions)
-		.values([{ name, amount, box, financial_account: financialAccount, year, month, day }]);
+	await db.insert(transactions).values([{ name, amount, box, financialAccount, year, month, day }]);
 };
 
 const getTransactions = async () => {

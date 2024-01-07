@@ -17,7 +17,7 @@
 		box.createBox(
 			name,
 			0,
-			convertToSubunits(goal, $currentAccount.currency_decimals),
+			convertToSubunits(goal, $currentAccount.currencyDecimals),
 			$currentAccount.id
 		);
 		boxes.reload?.();

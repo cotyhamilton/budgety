@@ -33,7 +33,7 @@
 		// create initial transaction
 		await transaction.createTransaction(
 			"starting balance",
-			convertToSubunits(balance, $currentAccount.currency_decimals),
+			convertToSubunits(balance, $currentAccount.currencyDecimals),
 			null,
 			$currentAccount.id,
 			2023,

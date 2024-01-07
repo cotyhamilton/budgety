@@ -3,7 +3,7 @@ import { db } from "../db";
 import { boxes } from "../db/schema";
 
 const createBox = async (name: string, balance: number, goal: number, financialAccount: number) => {
-	await db.insert(boxes).values([{ name, balance, goal, financial_account: financialAccount }]);
+	await db.insert(boxes).values([{ name, balance, goal, financialAccount }]);
 };
 
 export const getBoxes = async () => {

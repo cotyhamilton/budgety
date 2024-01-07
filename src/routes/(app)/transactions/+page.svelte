@@ -34,8 +34,8 @@
 				<Card.Title
 					><div class="flex justify-between">
 						<span>{transaction.name}</span><span
-							>{formatter($currentAccount?.currency_code).format(
-								convertFromSubunits(transaction?.amount, $currentAccount?.currency_decimals)
+							>{formatter($currentAccount?.currencyCode).format(
+								convertFromSubunits(transaction?.amount, $currentAccount?.currencyDecimals)
 							)}</span
 						>
 					</div></Card.Title
