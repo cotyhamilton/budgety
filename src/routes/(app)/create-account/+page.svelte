@@ -5,7 +5,6 @@
 	import { Label } from "$lib/components/ui/label";
 	import * as Select from "$lib/components/ui/select";
 	import { convertToSubunits, currencies } from "$lib/currencies";
-	import { getDatabase } from "$lib/db";
 	import { financialAccount } from "$lib/models/financialAccount";
 	import { transaction } from "$lib/models/transaction";
 	import { accounts, currentAccount } from "$lib/stores/account";
@@ -23,7 +22,6 @@
 	// save account and redirect to accounts page
 	const saveAccount = async () => {
 		await financialAccount.createFinancialAccount(
-			await getDatabase(),
 			name,
 			currencyCode,
 			currencies[currencyCode].decimals
@@ -34,7 +32,6 @@
 		$currentAccount = $accounts[0];
 		// create initial transaction
 		await transaction.createTransaction(
-			await getDatabase(),
 			"starting balance",
 			convertToSubunits(balance, $currentAccount.currency_decimals),
 			null,

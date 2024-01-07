@@ -4,7 +4,6 @@
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
 	import { convertToSubunits } from "$lib/currencies";
-	import { getDatabase } from "$lib/db";
 	import { box } from "$lib/models/box";
 	import { currentAccount } from "$lib/stores/account";
 	import { boxes } from "$lib/stores/boxes";
@@ -16,7 +15,6 @@
 
 	const saveBox = async () => {
 		box.createBox(
-			await getDatabase(),
 			name,
 			0,
 			convertToSubunits(goal, $currentAccount.currency_decimals),

@@ -18,7 +18,8 @@
 		"test:codegen": "playwright codegen http://localhost:4173/",
 		"test:unit": "vitest run",
 		"test:coverage": "vitest run --coverage",
-		"change": "beachball change"
+		"change": "beachball change",
+		"migrate:create": "drizzle-kit generate:sqlite"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.40.1",
@@ -35,6 +36,8 @@
 		"beachball": "^2.39.0",
 		"bits-ui": "^0.13.0",
 		"clsx": "^2.1.0",
+		"drizzle-kit": "^0.20.10",
+		"drizzle-orm": "^0.29.3",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-square-svelte-store": "^1.0.0",

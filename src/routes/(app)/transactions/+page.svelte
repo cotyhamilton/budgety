@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as Card from "$lib/components/ui/card";
 	import { convertFromSubunits, formatter } from "$lib/currencies";
-	import { getDatabase } from "$lib/db";
 	import { getBoxById } from "$lib/models/box";
 	import { currentAccount } from "$lib/stores/account";
 	import { transactions } from "$lib/stores/transaction";
@@ -10,7 +9,7 @@
 
 	const getBoxName = async (id: number | Box | null | undefined) => {
 		if (typeof id === "number") {
-			const box = await getBoxById(await getDatabase(), id);
+			const box = await getBoxById(id);
 			return box?.name;
 		}
 		return "";
