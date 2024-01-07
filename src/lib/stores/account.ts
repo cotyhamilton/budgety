@@ -19,7 +19,7 @@ export const currentBalance = asyncDerived(
 	async ([$currentAccount]) => {
 		const { balance } = await getBalanceForAccountId($currentAccount.id);
 		const formatted = formatter($currentAccount?.currencyCode).format(
-			convertFromSubunits(balance, $currentAccount?.currencyDecimals)
+			convertFromSubunits(+(balance ?? 0), $currentAccount?.currencyDecimals)
 		);
 		return {
 			raw: balance,
