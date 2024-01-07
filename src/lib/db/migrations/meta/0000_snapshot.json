@@ -1,7 +1,7 @@
 {
 	"version": "5",
 	"dialect": "sqlite",
-	"id": "028febd7-b20c-4d1e-a83d-1381dda56cd5",
+	"id": "68151cc3-8294-4962-978d-0bd550c6252d",
 	"prevId": "00000000-0000-0000-0000-000000000000",
 	"tables": {
 		"boxes": {
@@ -220,8 +220,8 @@
 					"columns": ["name"],
 					"isUnique": true
 				},
-				"amount_index": {
-					"name": "amount_index",
+				"amount_idx": {
+					"name": "amount_idx",
 					"columns": ["amount"],
 					"isUnique": false
 				}

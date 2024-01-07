@@ -36,4 +36,4 @@ CREATE TABLE `transactions` (
 CREATE UNIQUE INDEX `financial_accounts_name_unique` ON `financial_accounts` (`name`);--> statement-breakpoint
 CREATE UNIQUE INDEX `financial_accounts_currency_code_unique` ON `financial_accounts` (`currency_code`);--> statement-breakpoint
 CREATE UNIQUE INDEX `transactions_name_unique` ON `transactions` (`name`);--> statement-breakpoint
-CREATE INDEX `amount_index` ON `transactions` (`amount`);
+CREATE INDEX `amount_idx` ON `transactions` (`amount`);

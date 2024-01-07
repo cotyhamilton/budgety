@@ -37,6 +37,6 @@ export const transactions = sqliteTable(
 		dateUpdated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => ({
-		amountIdx: index("amount_index").on(table.amount)
+		amountIdx: index("amount_idx").on(table.amount)
 	})
 );
