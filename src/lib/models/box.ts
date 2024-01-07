@@ -1,28 +1,18 @@
-import type { Box } from "$lib/types";
-import type { DB } from "@vlcn.io/crsqlite-wasm";
+import { eq } from "drizzle-orm";
+import { db } from "../db";
+import { boxes } from "../db/schema";
 
-const createBox = async (
-	db: DB,
-	name: string,
-	balance: number,
-	goal: number,
-	financialAccount: number
-) => {
-	await db.exec("INSERT INTO boxes (name, balance, goal, financial_account) VALUES (?, ?, ?, ?);", [
-		name,
-		balance,
-		goal,
-		financialAccount
-	]);
+const createBox = async (name: string, balance: number, goal: number, financialAccount: number) => {
+	await db.insert(boxes).values([{ name, balance, goal, financialAccount }]);
 };
 
-export const getBoxes = async (db: DB) => {
-	const result = await db.execO<Box>("SELECT * FROM boxes;");
+export const getBoxes = async () => {
+	const result = await db.select().from(boxes);
 	return result;
 };
 
-export const getBoxById = async (db: DB, id: number) => {
-	const result = await db.execO<Box>("SELECT * FROM boxes WHERE id = ?;", [id]);
+export const getBoxById = async (id: number) => {
+	const result = await db.select().from(boxes).where(eq(boxes.id, id));
 	return result.length > 0 ? result[0] : undefined;
 };
 

@@ -5,7 +5,6 @@
 	import { Label } from "$lib/components/ui/label";
 	import * as Select from "$lib/components/ui/select";
 	import { convertToSubunits } from "$lib/currencies";
-	import { getDatabase } from "$lib/db";
 	import { transaction } from "$lib/models/transaction";
 	import { currentAccount } from "$lib/stores/account";
 	import { boxes } from "$lib/stores/boxes";
@@ -25,9 +24,8 @@
 
 	const saveTransaction = async () => {
 		transaction.createTransaction(
-			await getDatabase(),
 			name,
-			convertToSubunits(amount, $currentAccount.currency_decimals),
+			convertToSubunits(amount, $currentAccount.currencyDecimals),
 			box ?? null,
 			$currentAccount.id,
 			2023,

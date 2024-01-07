@@ -1,29 +1,26 @@
-import type { Transaction } from "$lib/types";
-import type { DB } from "@vlcn.io/crsqlite-wasm";
+import { eq } from "drizzle-orm";
+import { db } from "../db";
+import { transactions } from "../db/schema";
 
 const createTransaction = async (
-	db: DB,
 	name: string,
-	amount: number | null,
+	amount: number,
 	box: number | null,
 	financialAccount: number,
 	year: number,
 	month: number,
 	day: number
 ): Promise<void> => {
-	await db.exec(
-		"INSERT INTO transactions (name, amount, box, financial_account, year, month, day) VALUES (?, ?, ?, ?, ?, ?, ?);",
-		[name, amount, box, financialAccount, year, month, day]
-	);
+	await db.insert(transactions).values([{ name, amount, box, financialAccount, year, month, day }]);
 };
 
-const getTransactions = async (db: DB): Promise<Transaction[]> => {
-	const result = await db.execO<Transaction>("SELECT * FROM transactions;");
+const getTransactions = async () => {
+	const result = await db.select().from(transactions);
 	return result;
 };
 
-const getTransactionById = async (db: DB, id: number) => {
-	const result = await db.execO<Transaction>("SELECT * FROM transactions WHERE id = ?;", [id]);
+const getTransactionById = async (id: number) => {
+	const result = await db.select().from(transactions).where(eq(transactions.id, id));
 	return result.length > 0 ? result[0] : undefined;
 };
 

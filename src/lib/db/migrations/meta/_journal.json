@@ -1,0 +1,13 @@
+{
+	"version": "5",
+	"dialect": "sqlite",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "5",
+			"when": 1704604393025,
+			"tag": "0000_real_kid_colt",
+			"breakpoints": true
+		}
+	]
+}
