@@ -95,4 +95,5 @@ export async function migrate<TSchema extends Record<string, unknown>>(
 			);
 		}
 	}
+	console.log("applied migrations");
 }
