@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { db } from "../db";
+import { db } from "../db/client";
 import { boxes } from "../db/schema";
 
 const createBox = async (name: string, balance: number, goal: number, financialAccount: number) => {
@@ -7,13 +7,11 @@ const createBox = async (name: string, balance: number, goal: number, financialA
 };
 
 export const getBoxes = async () => {
-	const result = await db.select().from(boxes);
-	return result;
+	return await db.select().from(boxes);
 };
 
 export const getBoxById = async (id: number) => {
-	const result = await db.select().from(boxes).where(eq(boxes.id, id));
-	return result.length > 0 ? result[0] : undefined;
+	return await db.select().from(boxes).where(eq(boxes.id, id)).get();
 };
 
 export const box = {
