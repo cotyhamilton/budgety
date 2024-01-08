@@ -53,8 +53,7 @@ export async function readMigrationFiles(): Promise<MigrationMeta[]> {
 				folderMillis: journalEntry.when,
 				hash: await hashQuery(query)
 			});
-		} catch (e) {
-			console.log(e);
+		} catch {
 			throw new Error(`Failed to import migration ${journalEntry.tag}`);
 		}
 	}
@@ -85,15 +84,22 @@ export async function migrate<TSchema extends Record<string, unknown>>(
 
 	const lastDbMigration = dbMigrations[0] ?? undefined;
 
-	for (const migration of migrations) {
-		if (!lastDbMigration || Number(lastDbMigration[2])! < migration.folderMillis) {
-			for (const stmt of migration.sql) {
-				await db.run(sql.raw(stmt));
+	await db.run(sql`BEGIN`);
+	try {
+		for (const migration of migrations) {
+			if (!lastDbMigration || Number(lastDbMigration[2])! < migration.folderMillis) {
+				for (const stmt of migration.sql) {
+					await db.run(sql.raw(stmt));
+				}
+				await db.run(
+					sql`INSERT INTO "__drizzle_migrations" ("hash", "created_at") VALUES(${migration.hash}, ${migration.folderMillis})`
+				);
 			}
-			await db.run(
-				sql`INSERT INTO "__drizzle_migrations" ("hash", "created_at") VALUES(${migration.hash}, ${migration.folderMillis})`
-			);
 		}
+		await db.run(sql`COMMIT`);
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	} catch (e) {
+		await db.run(sql`ROLLBACK`);
+		throw e;
 	}
-	console.log("applied migrations");
 }

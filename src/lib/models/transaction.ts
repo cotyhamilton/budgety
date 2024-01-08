@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { db } from "../db";
+import { db } from "../db/client";
 import { transactions } from "../db/schema";
 
 const createTransaction = async (

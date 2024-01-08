@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const financialAccounts = sqliteTable("financial_accounts", {
@@ -40,3 +40,11 @@ export const transactions = sqliteTable(
 		amountIdx: index("amount_idx").on(table.amount)
 	})
 );
+
+export const boxesRelations = relations(boxes, ({ many }) => ({
+	tx: many(transactions)
+}));
+
+export const txRelations = relations(transactions, ({ one }) => ({
+	box: one(boxes, { fields: [transactions.box], references: [boxes.id] })
+}));

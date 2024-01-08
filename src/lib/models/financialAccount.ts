@@ -1,5 +1,5 @@
 import { eq, sum } from "drizzle-orm";
-import { db } from "../db";
+import { db } from "../db/client";
 import { financialAccounts, transactions } from "../db/schema";
 
 const createFinancialAccount = async (
@@ -11,22 +11,19 @@ const createFinancialAccount = async (
 };
 
 const getFinancialAccounts = async () => {
-	const result = await db.select().from(financialAccounts);
-	return result;
+	return await db.select().from(financialAccounts);
 };
 
 const getFinancialAccountById = async (id: number) => {
-	const result = await db.select().from(financialAccounts).where(eq(financialAccounts.id, id));
-	return result.length > 0 ? result[0] : undefined;
+	return await db.select().from(financialAccounts).where(eq(financialAccounts.id, id)).get();
 };
 
 export const getBalanceForAccountId = async (id: number) => {
-	const result = await db
+	return await db
 		.select({ balance: sum(transactions.amount) })
 		.from(transactions)
-		.where(eq(transactions.financialAccount, id));
-
-	return result[0];
+		.where(eq(transactions.financialAccount, id))
+		.get();
 };
 
 export const financialAccount = {

@@ -1,8 +1,8 @@
 import initWasm, { type DB } from "@vlcn.io/crsqlite-wasm";
 import wasmUrl from "@vlcn.io/crsqlite-wasm/crsqlite.wasm?url";
 import { drizzle } from "drizzle-orm/sqlite-proxy";
-import { migrate } from "./db/migrator";
-import * as schema from "./db/schema";
+import { migrate } from "./migrator";
+import * as schema from "./schema";
 
 let connection: DB;
 let creating = false;
@@ -13,7 +13,15 @@ export const createDatabase = async () => {
 		process.env.NODE_ENV === "test" ? "https://esm.sh/@vlcn.io/crsqlite-wasm@0.16.0" : wasmUrl;
 	const sqlite = await initWasm(() => url);
 	connection = await sqlite.open(":memory:");
-	await migrate(db);
+
+	try {
+		await migrate(db);
+		console.log("Applied migrations");
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	} catch (e: any) {
+		console.error("Error during running migrations: " + e.message);
+	}
+
 	creating = false;
 };
 
@@ -29,14 +37,30 @@ export const getDatabase = async () => {
 };
 
 export const db = drizzle(
-	async (sql, params) => {
+	async (sql, params, method) => {
 		const sqlite = await getDatabase();
+		const stmt = await sqlite.prepare(sql);
 		try {
-			const rows = await sqlite.execA(sql, params);
+			let rows = [];
+			switch (method) {
+				case "get":
+					rows = await stmt.bind(params).raw(true).get(null);
+					break;
+				case "run":
+					await stmt.bind(params).raw(true).run(null);
+					break;
+				case "values":
+				case "all":
+				default:
+					rows = await stmt.bind(params).raw(true).all(null);
+					break;
+			}
+			stmt.finalize(null);
 			return { rows: rows };
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (e: any) {
-			console.error("Error from sqlite proxy: ", e.response.data);
+			console.error("Error from sqlite proxy: ", e.message);
+			stmt.finalize(null);
 			return { rows: [] };
 		}
 	},
