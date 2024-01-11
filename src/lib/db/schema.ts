@@ -33,6 +33,7 @@ export const transactions = sqliteTable(
 		date: text("date")
 			.default(sql`CURRENT_DATE`)
 			.notNull(),
+		adjustment: integer("adjustment", { mode: "boolean" }).default(false).notNull(),
 		dateCreated: text("date_created").default(sql`CURRENT_TIMESTAMP`),
 		dateUpdated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
 	},

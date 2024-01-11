@@ -1,20 +1,27 @@
 import { desc, eq } from "drizzle-orm";
 import { db } from "../db/client";
 import { transactions } from "../db/schema";
+import type { Transaction } from "../types";
 
-const createTransaction = async (
-	name: string,
-	amount: number,
-	box: number | null,
-	financialAccount: number,
-	year: string,
-	month: string,
-	day: string
-) => {
+const createTransaction = async ({
+	name,
+	amount,
+	box,
+	financialAccount,
+	year,
+	month,
+	day,
+	adjustment = false
+}: Pick<Transaction, "name" | "amount" | "box" | "financialAccount"> & {
+	year: string;
+	month: string;
+	day: string;
+	adjustment?: boolean;
+}) => {
 	const date = `${year}-${month}-${day}`;
 	return await db
 		.insert(transactions)
-		.values([{ name, amount, box, financialAccount, date }])
+		.values([{ name, amount, box, financialAccount, date, adjustment }])
 		.returning()
 		.get();
 };
