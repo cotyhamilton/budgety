@@ -28,9 +28,9 @@
 			convertToSubunits(amount, $currentAccount.currencyDecimals),
 			box ?? null,
 			$currentAccount.id,
-			2023,
-			11,
-			18
+			`${new Date().getFullYear()}`,
+			("0" + (new Date().getMonth() + 1)).slice(-2),
+			("0" + new Date().getDate()).slice(-2)
 		);
 		transactions.reload?.();
 		name = "";

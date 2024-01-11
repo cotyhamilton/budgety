@@ -14,6 +14,11 @@
 		}
 		return "";
 	};
+
+	const formatDate = (isoString: string) => {
+		const [year, month, day] = isoString.split("-");
+		return new Date(+year, +month - 1, +day).toDateString();
+	};
 </script>
 
 <svelte:head>
@@ -42,7 +47,7 @@
 				>
 				<Card.Description
 					><div class="flex justify-between">
-						<span>{new Date().toDateString()}</span><span
+						<span>{formatDate(transaction.date)}</span><span
 							>{#await getBoxName(transaction.box) then name}
 								{name}
 							{/await}</span
