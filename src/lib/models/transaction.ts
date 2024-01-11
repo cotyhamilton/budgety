@@ -9,12 +9,13 @@ const createTransaction = async (
 	financialAccount: number,
 	year: string,
 	month: string,
-	day: string
+	day: string,
+	adjustment = false
 ) => {
 	const date = `${year}-${month}-${day}`;
 	return await db
 		.insert(transactions)
-		.values([{ name, amount, box, financialAccount, date }])
+		.values([{ name, amount, box, financialAccount, date, adjustment }])
 		.returning()
 		.get();
 };

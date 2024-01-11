@@ -1,7 +1,7 @@
 {
 	"version": "5",
 	"dialect": "sqlite",
-	"id": "0326cb42-fc5a-4081-8175-7ea1335f5b28",
+	"id": "daf7cb8b-4ad6-4445-930d-75dab5b92f57",
 	"prevId": "68151cc3-8294-4962-978d-0bd550c6252d",
 	"tables": {
 		"boxes": {
@@ -180,9 +180,17 @@
 					"name": "date",
 					"type": "text",
 					"primaryKey": false,
-					"notNull": false,
+					"notNull": true,
 					"autoincrement": false,
 					"default": "CURRENT_DATE"
+				},
+				"adjustment": {
+					"name": "adjustment",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false,
+					"default": false
 				},
 				"date_created": {
 					"name": "date_created",
