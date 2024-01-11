@@ -7,7 +7,11 @@ const createFinancialAccount = async (
 	currencyCode: string,
 	currencyDecimals: number
 ) => {
-	await db.insert(financialAccounts).values([{ name, currencyCode, currencyDecimals }]);
+	return await db
+		.insert(financialAccounts)
+		.values([{ name, currencyCode, currencyDecimals }])
+		.returning()
+		.get();
 };
 
 const getFinancialAccounts = async () => {

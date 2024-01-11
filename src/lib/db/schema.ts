@@ -30,9 +30,9 @@ export const transactions = sqliteTable(
 		amount: integer("amount").notNull(),
 		box: integer("box").references(() => boxes.id),
 		financialAccount: integer("financial_account").references(() => financialAccounts.id),
-		year: integer("year").notNull(),
-		month: integer("month").notNull(),
-		day: integer("day").notNull(),
+		date: text("date")
+			.default(sql`CURRENT_DATE`)
+			.notNull(),
 		dateCreated: text("date_created").default(sql`CURRENT_TIMESTAMP`),
 		dateUpdated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
 	},

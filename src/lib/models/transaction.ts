@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { db } from "../db/client";
 import { transactions } from "../db/schema";
 
@@ -7,21 +7,24 @@ const createTransaction = async (
 	amount: number,
 	box: number | null,
 	financialAccount: number,
-	year: number,
-	month: number,
-	day: number
-): Promise<void> => {
-	await db.insert(transactions).values([{ name, amount, box, financialAccount, year, month, day }]);
+	year: string,
+	month: string,
+	day: string
+) => {
+	const date = `${year}-${month}-${day}`;
+	return await db
+		.insert(transactions)
+		.values([{ name, amount, box, financialAccount, date }])
+		.returning()
+		.get();
 };
 
 const getTransactions = async () => {
-	const result = await db.select().from(transactions);
-	return result;
+	return await db.select().from(transactions).orderBy(desc(transactions.date));
 };
 
 const getTransactionById = async (id: number) => {
-	const result = await db.select().from(transactions).where(eq(transactions.id, id));
-	return result.length > 0 ? result[0] : undefined;
+	return await db.select().from(transactions).where(eq(transactions.id, id)).get();
 };
 
 export const transaction = {
