@@ -31,16 +31,16 @@
 		// save new account as current account
 		$currentAccount = $accounts[0];
 		// create initial transaction
-		await transaction.createTransaction(
-			"starting balance",
-			convertToSubunits(balance, $currentAccount.currencyDecimals),
-			null,
-			$currentAccount.id,
-			`${new Date().getFullYear()}`,
-			("0" + (new Date().getMonth() + 1)).slice(-2),
-			("0" + new Date().getDate()).slice(-2),
-			true
-		);
+		await transaction.createTransaction({
+			name: "starting balance",
+			amount: convertToSubunits(balance, $currentAccount.currencyDecimals),
+			box: null,
+			financialAccount: $currentAccount.id,
+			year: `${new Date().getFullYear()}`,
+			month: ("0" + (new Date().getMonth() + 1)).slice(-2),
+			day: ("0" + new Date().getDate()).slice(-2),
+			adjustment: true
+		});
 		goto("/accounts");
 	};
 </script>

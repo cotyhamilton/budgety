@@ -23,15 +23,15 @@
 	};
 
 	const saveTransaction = async () => {
-		transaction.createTransaction(
+		transaction.createTransaction({
 			name,
-			convertToSubunits(amount, $currentAccount.currencyDecimals),
-			box ?? null,
-			$currentAccount.id,
-			`${new Date().getFullYear()}`,
-			("0" + (new Date().getMonth() + 1)).slice(-2),
-			("0" + new Date().getDate()).slice(-2)
-		);
+			amount: convertToSubunits(amount, $currentAccount.currencyDecimals),
+			box: box ?? null,
+			financialAccount: $currentAccount.id,
+			year: `${new Date().getFullYear()}`,
+			month: ("0" + (new Date().getMonth() + 1)).slice(-2),
+			day: ("0" + new Date().getDate()).slice(-2)
+		});
 		transactions.reload?.();
 		name = "";
 		amount = 0;
