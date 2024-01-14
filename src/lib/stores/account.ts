@@ -17,9 +17,9 @@ export const accounts = asyncReadable<FinancialAccount[]>(
 export const currentBalance = asyncDerived(
 	[currentAccount, transactions],
 	async ([$currentAccount]) => {
-		const { balance } = await getBalanceForAccountId($currentAccount.id);
+		const balance = (await getBalanceForAccountId($currentAccount.id))?.balance ?? 0;
 		const formatted = formatter($currentAccount?.currencyCode).format(
-			convertFromSubunits(+(balance ?? 0), $currentAccount?.currencyDecimals)
+			convertFromSubunits(+balance, $currentAccount?.currencyDecimals)
 		);
 		return {
 			raw: balance,

@@ -1,7 +1,7 @@
 import { desc, eq } from "drizzle-orm";
 import { db } from "../db/client";
 import { transactions } from "../db/schema";
-import type { Transaction } from "../types";
+import type { TransactionCreate } from "../types";
 
 const createTransaction = async ({
 	name,
@@ -12,7 +12,7 @@ const createTransaction = async ({
 	month,
 	day,
 	adjustment = false
-}: Pick<Transaction, "name" | "amount" | "box" | "financialAccount"> & {
+}: TransactionCreate & {
 	year: string;
 	month: string;
 	day: string;
@@ -27,7 +27,10 @@ const createTransaction = async ({
 };
 
 const getTransactions = async () => {
-	return await db.select().from(transactions).orderBy(desc(transactions.date));
+	return await db.query.transactions.findMany({
+		with: { box: true },
+		orderBy: [desc(transactions.date)]
+	});
 };
 
 const getTransactionById = async (id: number) => {

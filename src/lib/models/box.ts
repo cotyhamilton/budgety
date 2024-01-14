@@ -1,8 +1,9 @@
 import { eq } from "drizzle-orm";
 import { db } from "../db/client";
 import { boxes } from "../db/schema";
+import type { BoxCreate } from "../types";
 
-const createBox = async (name: string, balance: number, goal: number, financialAccount: number) => {
+const createBox = async ({ name, balance, goal, financialAccount }: BoxCreate) => {
 	return await db
 		.insert(boxes)
 		.values([{ name, balance, goal, financialAccount }])
@@ -11,7 +12,7 @@ const createBox = async (name: string, balance: number, goal: number, financialA
 };
 
 export const getBoxes = async () => {
-	return await db.select().from(boxes);
+	return await db.query.boxes.findMany({ with: { tx: true } });
 };
 
 export const getBoxById = async (id: number) => {

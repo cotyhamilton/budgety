@@ -26,7 +26,7 @@ export const transactions = sqliteTable(
 	"transactions",
 	{
 		id: integer("id").primaryKey({ autoIncrement: true }),
-		name: text("name").notNull().unique(),
+		name: text("name").notNull(),
 		amount: integer("amount").notNull(),
 		box: integer("box").references(() => boxes.id),
 		financialAccount: integer("financial_account").references(() => financialAccounts.id),

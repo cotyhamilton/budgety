@@ -10,3 +10,10 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 /test-results
 /playwright
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
