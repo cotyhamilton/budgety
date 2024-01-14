@@ -18,6 +18,8 @@ jobs:
     steps:
     - name: Clone repo
       uses: actions/checkout@v4
+    - name: Corepack enable
+      run: corepack enable
     - name: Setup node 18
       uses: actions/setup-node@v4
       with:
