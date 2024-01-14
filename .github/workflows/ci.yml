@@ -65,6 +65,7 @@ jobs:
             repo: context.repo.repo,
             body: '🚀 ${{ env.DEPLOYMENT_URL }}'
           })
+      if: github.event_name == 'pull_request'
     - name: Deploy production
       run: |
         npx vercel pull --environment=production --yes --token=${{ secrets.VERCEL_TOKEN }}
