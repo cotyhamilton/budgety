@@ -14,12 +14,12 @@
 	let open: boolean;
 
 	const saveBox = async () => {
-		box.createBox(
+		box.createBox({
 			name,
-			0,
-			convertToSubunits(goal, $currentAccount.currencyDecimals),
-			$currentAccount.id
-		);
+			balance: 0,
+			goal: convertToSubunits(goal, $currentAccount.currencyDecimals),
+			financialAccount: $currentAccount.id
+		});
 		boxes.reload?.();
 		name = "";
 		goal = 0;

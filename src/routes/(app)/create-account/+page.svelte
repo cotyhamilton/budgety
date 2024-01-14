@@ -21,11 +21,11 @@
 
 	// save account and redirect to accounts page
 	const saveAccount = async () => {
-		await financialAccount.createFinancialAccount(
+		await financialAccount.createFinancialAccount({
 			name,
 			currencyCode,
-			currencies[currencyCode].decimals
-		);
+			currencyDecimals: currencies[currencyCode].decimals
+		});
 		// update accounts store
 		await accounts.reload?.();
 		// save new account as current account

@@ -1,0 +1,65 @@
+diff --git a/sqlite-proxy/session.js b/sqlite-proxy/session.js
+index e2f82be3ec19fca0c6d503fb4f79e6af9b64465f..d6cb481a0a4d51e3146e477ea96cdbdc39bbeb84 100644
+--- a/sqlite-proxy/session.js
++++ b/sqlite-proxy/session.js
+@@ -13,8 +13,8 @@ class SQLiteRemoteSession extends SQLiteSession {
+   }
+   static [entityKind] = "SQLiteRemoteSession";
+   logger;
+-  prepareQuery(query, fields, executeMethod) {
+-    return new PreparedQuery(this.client, query, this.logger, fields, executeMethod);
++  prepareQuery(query, fields, executeMethod, customResultMapper) {
++    return new PreparedQuery(this.client, query, this.logger, fields, executeMethod, customResultMapper);
+   }
+   async transaction(transaction, config) {
+     const tx = new SQLiteProxyTransaction("async", this.dialect, this, this.schema);
+@@ -46,11 +46,12 @@ class SQLiteProxyTransaction extends SQLiteTransaction {
+   }
+ }
+ class PreparedQuery extends PreparedQueryBase {
+-  constructor(client, query, logger, fields, executeMethod) {
++  constructor(client, query, logger, fields, executeMethod, customResultMapper) {
+     super("async", executeMethod, query);
+     this.client = client;
+     this.logger = logger;
+     this.fields = fields;
++    this.customResultMapper = customResultMapper;
+   }
+   static [entityKind] = "SQLiteProxyPreparedQuery";
+   run(placeholderValues) {
+@@ -59,24 +60,30 @@ class PreparedQuery extends PreparedQueryBase {
+     return this.client(this.query.sql, params, "run");
+   }
+   async all(placeholderValues) {
+-    const { fields, query, logger, joinsNotNullableMap } = this;
++    const { fields, query, logger, joinsNotNullableMap, customResultMapper } = this;
+     const params = fillPlaceholders(query.params, placeholderValues ?? {});
+     logger.logQuery(query.sql, params);
+     const { rows } = await this.client(query.sql, params, "all");
++    if (customResultMapper) {
++      return customResultMapper(rows);
++    }
+     if (fields) {
+       return rows.map((row) => mapResultRow(fields, row, joinsNotNullableMap));
+     }
+     return rows;
+   }
+   async get(placeholderValues) {
+-    const { fields, query, logger, joinsNotNullableMap } = this;
++    const { fields, query, logger, joinsNotNullableMap, customResultMapper } = this;
+     const params = fillPlaceholders(query.params, placeholderValues ?? {});
+     logger.logQuery(query.sql, params);
+     const clientResult = await this.client(query.sql, params, "get");
++    if (Array.isArray(clientResult.rows) && clientResult.rows.length === 0) {
++      return undefined;
++    }
++    if (customResultMapper) {
++      return customResultMapper([clientResult.rows]);
++    }
+     if (fields) {
+-      if (clientResult.rows === void 0) {
+-        return void 0;
+-      }
+       return mapResultRow(fields, clientResult.rows, joinsNotNullableMap);
+     }
+     return clientResult.rows;

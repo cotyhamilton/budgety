@@ -1,19 +1,9 @@
 <script lang="ts">
 	import * as Card from "$lib/components/ui/card";
 	import { convertFromSubunits, formatter } from "$lib/currencies";
-	import { getBoxById } from "$lib/models/box";
 	import { currentAccount } from "$lib/stores/account";
 	import { transactions } from "$lib/stores/transaction";
-	import type { Box } from "$lib/types";
 	import NewTxModal from "./NewTxModal.svelte";
-
-	const getBoxName = async (id: number | Box | null | undefined) => {
-		if (typeof id === "number") {
-			const box = await getBoxById(id);
-			return box?.name;
-		}
-		return "";
-	};
 
 	const formatDate = (isoString: string) => {
 		const [year, month, day] = isoString.split("-");
@@ -48,9 +38,7 @@
 				<Card.Description
 					><div class="flex justify-between">
 						<span>{formatDate(transaction.date)}</span><span
-							>{#await getBoxName(transaction.box) then name}
-								{name}
-							{/await}</span
+							>{transaction.box?.name || "safe-to-spend"}</span
 						>
 					</div></Card.Description
 				>

@@ -1,0 +1,249 @@
+{
+	"version": "5",
+	"dialect": "sqlite",
+	"id": "344a4cb2-58c8-46b5-9152-2874048fd9d3",
+	"prevId": "daf7cb8b-4ad6-4445-930d-75dab5b92f57",
+	"tables": {
+		"boxes": {
+			"name": "boxes",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "integer",
+					"primaryKey": true,
+					"notNull": true,
+					"autoincrement": true
+				},
+				"name": {
+					"name": "name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"balance": {
+					"name": "balance",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"goal": {
+					"name": "goal",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"financial_account": {
+					"name": "financial_account",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"date_created": {
+					"name": "date_created",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false,
+					"default": "CURRENT_TIMESTAMP"
+				},
+				"date_updated": {
+					"name": "date_updated",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false,
+					"default": "CURRENT_TIMESTAMP"
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"boxes_financial_account_financial_accounts_id_fk": {
+					"name": "boxes_financial_account_financial_accounts_id_fk",
+					"tableFrom": "boxes",
+					"tableTo": "financial_accounts",
+					"columnsFrom": ["financial_account"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"financial_accounts": {
+			"name": "financial_accounts",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "integer",
+					"primaryKey": true,
+					"notNull": true,
+					"autoincrement": true
+				},
+				"name": {
+					"name": "name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"currency_code": {
+					"name": "currency_code",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"currency_decimals": {
+					"name": "currency_decimals",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"date_created": {
+					"name": "date_created",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false,
+					"default": "CURRENT_TIMESTAMP"
+				},
+				"date_updated": {
+					"name": "date_updated",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false,
+					"default": "CURRENT_TIMESTAMP"
+				}
+			},
+			"indexes": {
+				"financial_accounts_name_unique": {
+					"name": "financial_accounts_name_unique",
+					"columns": ["name"],
+					"isUnique": true
+				},
+				"financial_accounts_currency_code_unique": {
+					"name": "financial_accounts_currency_code_unique",
+					"columns": ["currency_code"],
+					"isUnique": true
+				}
+			},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"transactions": {
+			"name": "transactions",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "integer",
+					"primaryKey": true,
+					"notNull": true,
+					"autoincrement": true
+				},
+				"name": {
+					"name": "name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"amount": {
+					"name": "amount",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"box": {
+					"name": "box",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false
+				},
+				"financial_account": {
+					"name": "financial_account",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false
+				},
+				"date": {
+					"name": "date",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false,
+					"default": "CURRENT_DATE"
+				},
+				"adjustment": {
+					"name": "adjustment",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false,
+					"default": false
+				},
+				"date_created": {
+					"name": "date_created",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false,
+					"default": "CURRENT_TIMESTAMP"
+				},
+				"date_updated": {
+					"name": "date_updated",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false,
+					"default": "CURRENT_TIMESTAMP"
+				}
+			},
+			"indexes": {
+				"amount_idx": {
+					"name": "amount_idx",
+					"columns": ["amount"],
+					"isUnique": false
+				}
+			},
+			"foreignKeys": {
+				"transactions_box_boxes_id_fk": {
+					"name": "transactions_box_boxes_id_fk",
+					"tableFrom": "transactions",
+					"tableTo": "boxes",
+					"columnsFrom": ["box"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				},
+				"transactions_financial_account_financial_accounts_id_fk": {
+					"name": "transactions_financial_account_financial_accounts_id_fk",
+					"tableFrom": "transactions",
+					"tableTo": "financial_accounts",
+					"columnsFrom": ["financial_account"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		}
+	},
+	"enums": {},
+	"_meta": {
+		"schemas": {},
+		"tables": {},
+		"columns": {}
+	}
+}

@@ -1,12 +1,13 @@
 import { eq, sum } from "drizzle-orm";
 import { db } from "../db/client";
 import { financialAccounts, transactions } from "../db/schema";
+import type { FinancialAccountCreate } from "../types";
 
-const createFinancialAccount = async (
-	name: string,
-	currencyCode: string,
-	currencyDecimals: number
-) => {
+const createFinancialAccount = async ({
+	name,
+	currencyCode,
+	currencyDecimals
+}: FinancialAccountCreate) => {
 	return await db
 		.insert(financialAccounts)
 		.values([{ name, currencyCode, currencyDecimals }])

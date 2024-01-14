@@ -12,7 +12,7 @@
 <div class="space-between flex items-center">
 	<h1 class="text-3xl my-5 font-bold">accounts</h1>
 	<div class="ml-auto mr-4">
-		<Button>
+		<Button disabled>
 			<PlusCircled class="mr-2 h-4 w-4" />
 			add account
 		</Button>

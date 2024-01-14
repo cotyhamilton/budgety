@@ -12,12 +12,18 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repo
       uses: actions/checkout@v4
+    - name: Corepack enable
+      run: corepack enable
     - name: Setup node 18
       uses: actions/setup-node@v4
       with:
@@ -41,3 +47,28 @@ jobs:
       with:
         name: test-results
         path: test-results/
+    - name: Deploy preview environment
+      run: |
+        npx vercel pull --environment=preview --yes --token=${{ secrets.VERCEL_TOKEN }}
+        mv .vercel build/
+        mv vercel.json build/
+        npx vercel deploy --cwd build --token=${{ secrets.VERCEL_TOKEN }} > deployment-url.txt
+        echo "DEPLOYMENT_URL=$(cat deployment-url.txt)" >> $GITHUB_ENV
+      if: github.event_name == 'pull_request'
+    - name: Update PR
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '🚀 ${{ env.DEPLOYMENT_URL }}'
+          })
+    - name: Deploy production
+      run: |
+        npx vercel pull --environment=production --yes --token=${{ secrets.VERCEL_TOKEN }}
+        mv .vercel build/
+        mv vercel.json build/
+        npx vercel deploy --prod --cwd build --token=${{ secrets.VERCEL_TOKEN }}
+      if: github.ref == 'refs/heads/main'
