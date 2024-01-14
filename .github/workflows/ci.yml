@@ -12,6 +12,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -43,3 +47,15 @@ jobs:
       with:
         name: test-results
         path: test-results/
+    - name: Deploy Preview Environment
+      run: |
+        npx vercel pull --environment=preview --yes --token=${{ secrets.VERCEL_TOKEN }}
+        mv -r .vercel build/
+        mv vercel.json build/
+        npx vercel deploy --cwd build --token=${{ secrets.VERCEL_TOKEN }}
+    - name: Deploy
+      run: |
+        npx vercel pull --environment=production --yes --token=${{ secrets.VERCEL_TOKEN }}
+        mv -r .vercel build/
+        mv vercel.json build/
+        npx vercel deploy --prod --cwd build --token=${{ secrets.VERCEL_TOKEN }}
