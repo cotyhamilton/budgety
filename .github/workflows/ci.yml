@@ -53,9 +53,11 @@ jobs:
         mv -r .vercel build/
         mv vercel.json build/
         npx vercel deploy --cwd build --token=${{ secrets.VERCEL_TOKEN }}
-    - name: Deploy
+      if: github.event_name == 'pull_request'
+    - name: Deploy Production
       run: |
         npx vercel pull --environment=production --yes --token=${{ secrets.VERCEL_TOKEN }}
         mv -r .vercel build/
         mv vercel.json build/
         npx vercel deploy --prod --cwd build --token=${{ secrets.VERCEL_TOKEN }}
+      if: github.ref == 'refs/heads/main'
