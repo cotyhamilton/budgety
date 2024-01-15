@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
 	import * as Card from "$lib/components/ui/card";
-	import { accounts, currentBalance } from "$lib/stores/account";
+	import { accounts, currentAccountBalances } from "$lib/stores/account";
 	import { PlusCircled } from "radix-icons-svelte";
 </script>
 
@@ -24,7 +24,7 @@
 		<Card.Root class="my-2">
 			<Card.Header>
 				<Card.Title>{financialAccount.name}</Card.Title>
-				<Card.Description>{$currentBalance?.formatted}</Card.Description>
+				<Card.Description>{$currentAccountBalances?.actual?.formatted}</Card.Description>
 			</Card.Header>
 		</Card.Root>
 	{/each}

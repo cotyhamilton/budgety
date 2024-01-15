@@ -1,5 +1,5 @@
 import { convertFromSubunits, formatter } from "$lib/currencies";
-import { financialAccount, getBalanceForAccountId } from "$lib/models/financialAccount";
+import { financialAccount, getAllBalancesForAccountId } from "$lib/models/financialAccount";
 import type { FinancialAccount } from "$lib/types";
 import { asyncDerived, asyncReadable, writable } from "@square/svelte-store";
 import { transactions } from "./transaction";
@@ -14,16 +14,33 @@ export const accounts = asyncReadable<FinancialAccount[]>(
 	{ reloadable: true }
 );
 
-export const currentBalance = asyncDerived(
+export const currentAccountBalances = asyncDerived(
 	[currentAccount, transactions],
 	async ([$currentAccount]) => {
-		const balance = (await getBalanceForAccountId($currentAccount.id))?.balance ?? 0;
-		const formatted = formatter($currentAccount?.currencyCode).format(
-			convertFromSubunits(+balance, $currentAccount?.currencyDecimals)
+		const balances = await getAllBalancesForAccountId($currentAccount.id);
+
+		const formattedBalance = formatter($currentAccount?.currencyCode).format(
+			convertFromSubunits(+balances.balance, $currentAccount?.currencyDecimals)
+		);
+		const formattedBoxesBalance = formatter($currentAccount?.currencyCode).format(
+			convertFromSubunits(+balances.boxes, $currentAccount?.currencyDecimals)
+		);
+		const formattedSafeBalance = formatter($currentAccount?.currencyCode).format(
+			convertFromSubunits(+balances.safe, $currentAccount?.currencyDecimals)
 		);
 		return {
-			raw: balance,
-			formatted
+			actual: {
+				raw: balances.balance,
+				formatted: formattedBalance
+			},
+			boxes: {
+				raw: balances.boxes,
+				formatted: formattedBoxesBalance
+			},
+			safe: {
+				raw: balances.safe,
+				formatted: formattedSafeBalance
+			}
 		};
 	},
 	{ reloadable: true }
