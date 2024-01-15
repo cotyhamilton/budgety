@@ -38,8 +38,7 @@
 			financialAccount: $currentAccount.id,
 			year: `${new Date().getFullYear()}`,
 			month: ("0" + (new Date().getMonth() + 1)).slice(-2),
-			day: ("0" + new Date().getDate()).slice(-2),
-			adjustment: true
+			day: ("0" + new Date().getDate()).slice(-2)
 		});
 		goto("/accounts");
 	};

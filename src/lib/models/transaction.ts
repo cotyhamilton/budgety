@@ -1,7 +1,7 @@
-import { desc, eq } from "drizzle-orm";
-import { db } from "../db/client";
-import { transactions } from "../db/schema";
-import type { TransactionCreate } from "../types";
+import { db } from "$lib/db/client";
+import { boxes, transactions } from "$lib/db/schema";
+import type { TransactionCreate } from "$lib/types";
+import { desc, eq, sql } from "drizzle-orm";
 
 const createTransaction = async ({
 	name,
@@ -19,11 +19,25 @@ const createTransaction = async ({
 	adjustment?: boolean;
 }) => {
 	const date = `${year}-${month}-${day}`;
-	return await db
-		.insert(transactions)
-		.values([{ name, amount, box, financialAccount, date, adjustment }])
-		.returning()
-		.get();
+	if (box) {
+		return await db.transaction(async (tx) => {
+			await tx
+				.update(boxes)
+				.set({ balance: sql`${boxes.balance} + ${amount}` })
+				.where(eq(boxes.id, box));
+			return await tx
+				.insert(transactions)
+				.values([{ name, amount, box, financialAccount, date, adjustment: amount > 0 }])
+				.returning()
+				.get();
+		});
+	} else {
+		return await db
+			.insert(transactions)
+			.values([{ name, amount, box, financialAccount, date, adjustment }])
+			.returning()
+			.get();
+	}
 };
 
 const getTransactions = async () => {

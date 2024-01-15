@@ -14,7 +14,7 @@
 	let name: string;
 	let amount: number;
 	let open: boolean;
-	let box: number;
+	let box: number | null;
 
 	// update box when selected
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,7 +23,7 @@
 	};
 
 	const saveTransaction = async () => {
-		transaction.createTransaction({
+		await transaction.createTransaction({
 			name,
 			amount: convertToSubunits(amount, $currentAccount.currencyDecimals),
 			box: box ?? null,
@@ -35,6 +35,7 @@
 		transactions.reload?.();
 		name = "";
 		amount = 0;
+		box = null;
 		open = false;
 	};
 </script>
