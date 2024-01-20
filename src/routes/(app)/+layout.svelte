@@ -16,9 +16,11 @@
 	$currentAccount = data.currentAccount || $accounts[0];
 </script>
 
-<Navigation />
-<AccountNavigation />
-<Separator class="my-4" />
+{#if $accounts.length}
+	<Navigation />
+	<AccountNavigation />
+	<Separator class="my-4" />
+{/if}
 
 <slot />
 

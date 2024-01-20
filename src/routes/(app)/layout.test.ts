@@ -6,7 +6,7 @@ describe("App Layout", () => {
 	beforeEach(() => cleanup());
 
 	it("should render", async () => {
-		const { container } = render(Layout);
+		const { container } = render(Layout, { data: { accounts: [], currentAccount: undefined } });
 		expect(container).toBeTruthy();
 	});
 });
