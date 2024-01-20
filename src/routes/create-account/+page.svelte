@@ -3,7 +3,7 @@
 	import { Button } from "$lib/components/ui/button";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
-	import * as Select from "$lib/components/ui/select";
+	import { Select } from "$lib/components/ui/select";
 	import { convertToSubunits, currencies } from "$lib/currencies";
 	import { financialAccount } from "$lib/models/financialAccount";
 	import { transaction } from "$lib/models/transaction";
@@ -12,12 +12,6 @@
 	let name: string;
 	let currencyCode: string;
 	let balance: number;
-
-	// update currency code when selected
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const handleSelect = async (e: any) => {
-		currencyCode = e.value;
-	};
 
 	// save account and redirect to accounts page
 	const saveAccount = async () => {
@@ -59,19 +53,11 @@
 			<Label for="account-name">name</Label>
 			<Input type="text" id="account-name" placeholder="capital one" bind:value={name} />
 			<Label for="currency">currency</Label>
-			<Select.Root onSelectedChange={handleSelect}>
-				<Select.Trigger>
-					<Select.Value placeholder="select a currency" />
-				</Select.Trigger>
-				<Select.Content>
-					<Select.Group>
-						{#each Object.entries(currencies) as [key]}
-							<Select.Item value={key}>{key}</Select.Item>
-						{/each}
-					</Select.Group>
-				</Select.Content>
-				<Select.Input id="currency" name="currency-code" bind:value={currencyCode} />
-			</Select.Root>
+			<Select id="currency" placeholder="select a currency" bind:value={currencyCode}>
+				{#each Object.entries(currencies) as [key]}
+					<option value={key}>{key}</option>
+				{/each}
+			</Select>
 			<Label for="balance">current balance</Label>
 			<div class="relative mt-2">
 				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">

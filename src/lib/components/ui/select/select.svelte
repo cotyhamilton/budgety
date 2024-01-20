@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
+	import type { HTMLSelectAttributes } from "svelte/elements";
 
-	export let value: string | number | bigint | boolean | null | undefined = undefined;
+	type $$Props = HTMLSelectAttributes;
+
+	export let value: $$Props["value"] = undefined;
 	export { className as class };
 
-	let className: string;
+	let className: $$Props["class"] = undefined;
 </script>
 
 <select

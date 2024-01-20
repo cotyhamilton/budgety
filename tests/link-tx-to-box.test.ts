@@ -16,8 +16,7 @@ test("can create transaction", async ({ page, navigation }) => {
 	await page.locator("#name").fill("move money");
 	await page.locator("#amount").click();
 	await page.locator("#amount").fill("100");
-	await page.getByRole("combobox").click();
-	await page.getByRole("option", { name: "☕️ coffee" }).click();
+	await page.getByLabel("box").selectOption("☕️ coffee");
 	await page.getByRole("button", { name: "Save changes" }).click();
 
 	await expect(page.getByText("safe-to-spend: $900.00")).toBeVisible();
@@ -31,8 +30,7 @@ test("can create transaction", async ({ page, navigation }) => {
 	await page.locator("#name").fill("starbucks");
 	await page.locator("#amount").click();
 	await page.locator("#amount").fill("-7.99");
-	await page.getByRole("combobox").click();
-	await page.getByRole("option", { name: "☕️ coffee" }).click();
+	await page.getByLabel("box").selectOption("☕️ coffee");
 	await page.getByRole("button", { name: "Save changes" }).click();
 	await page.getByRole("link", { name: "boxes" }).click();
 
