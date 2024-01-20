@@ -34,7 +34,7 @@
 		"@vlcn.io/crsqlite-wasm": "^0.16.0",
 		"autoprefixer": "^10.4.17",
 		"beachball": "^2.39.0",
-		"bits-ui": "^0.14.0",
+		"bits-ui": "^0.15.1",
 		"clsx": "^2.1.0",
 		"drizzle-kit": "^0.20.13",
 		"drizzle-orm": "patch:drizzle-orm@npm%3A0.29.3#~/.yarn/patches/drizzle-orm-npm-0.29.3-7722ef1a7c.patch",

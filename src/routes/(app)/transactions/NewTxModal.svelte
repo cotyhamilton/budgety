@@ -3,7 +3,7 @@
 	import * as Dialog from "$lib/components/ui/dialog";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
-	import * as Select from "$lib/components/ui/select";
+	import { Select } from "$lib/components/ui/select";
 	import { convertToSubunits } from "$lib/currencies";
 	import { transaction } from "$lib/models/transaction";
 	import { currentAccount } from "$lib/stores/account";
@@ -12,20 +12,14 @@
 	import { PlusCircled } from "radix-icons-svelte";
 
 	let name: string;
-	let amount: number;
+	let amount: number | undefined;
 	let open: boolean;
 	let box: number | null;
-
-	// update box when selected
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const handleBoxSelect = async (e: any) => {
-		box = e.value;
-	};
 
 	const saveTransaction = async () => {
 		await transaction.createTransaction({
 			name,
-			amount: convertToSubunits(amount, $currentAccount.currencyDecimals),
+			amount: convertToSubunits(amount ?? 0, $currentAccount.currencyDecimals),
 			box: box ?? null,
 			financialAccount: $currentAccount.id,
 			year: `${new Date().getFullYear()}`,
@@ -34,7 +28,7 @@
 		});
 		transactions.reload?.();
 		name = "";
-		amount = 0;
+		amount = undefined;
 		box = null;
 		open = false;
 	};
@@ -58,21 +52,24 @@
 				<Input id="name" type="text" class="col-span-3" bind:value={name} />
 			</div>
 			<div class="grid grid-cols-4 items-center gap-4">
+				<Label class="text-right" for="type">type</Label>
+				<Select id="type" class="col-span-3">
+					<option value="debit" selected>debit</option>
+					<option value="credit">credit</option>
+				</Select>
+			</div>
+			<div class="grid grid-cols-4 items-center gap-4">
 				<Label class="text-right">amount</Label>
 				<Input id="amount" type="number" class="col-span-3" bind:value={amount} />
 			</div>
 			<div class="grid grid-cols-4 items-center gap-4">
-				<Label class="text-right">box</Label>
-				<Select.Root onSelectedChange={handleBoxSelect} disabled={$boxes?.length < 1}>
-					<Select.Trigger class="col-span-3">
-						<Select.Value placeholder={!$boxes?.length ? "create box first" : ""} />
-					</Select.Trigger>
-					<Select.Content>
-						{#each $boxes as box}
-							<Select.Item value={box.id}>{box.name}</Select.Item>
-						{/each}
-					</Select.Content>
-				</Select.Root>
+				<Label class="text-right" for="box">box</Label>
+				<Select id="box" class="col-span-3" disabled={$boxes?.length < 1} bind:value={box}>
+					<option value={null}>safe-to-spend</option>
+					{#each $boxes as box}
+						<option value={box.id}>{box.name}</option>
+					{/each}
+				</Select>
 			</div>
 		</div>
 		<Dialog.Footer>

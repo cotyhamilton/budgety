@@ -6,6 +6,7 @@ export const financialAccounts = sqliteTable("financial_accounts", {
 	name: text("name").notNull().unique(),
 	currencyCode: text("currency_code").notNull().unique(),
 	currencyDecimals: integer("currency_decimals").notNull(),
+	isPrimary: integer("primary", { mode: "boolean" }).default(false).notNull(),
 	dateCreated: text("date_created").default(sql`CURRENT_TIMESTAMP`),
 	dateUpdated: text("date_updated").default(sql`CURRENT_TIMESTAMP`)
 });

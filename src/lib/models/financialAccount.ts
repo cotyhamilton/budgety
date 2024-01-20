@@ -6,11 +6,12 @@ import type { FinancialAccountCreate } from "../types";
 const createFinancialAccount = async ({
 	name,
 	currencyCode,
-	currencyDecimals
+	currencyDecimals,
+	isPrimary = false
 }: FinancialAccountCreate) => {
 	return await db
 		.insert(financialAccounts)
-		.values([{ name, currencyCode, currencyDecimals }])
+		.values([{ name, currencyCode, currencyDecimals, isPrimary }])
 		.returning()
 		.get();
 };

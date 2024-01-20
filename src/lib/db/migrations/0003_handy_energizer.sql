@@ -1,0 +1,1 @@
+ALTER TABLE financial_accounts ADD `primary` integer DEFAULT false NOT NULL;

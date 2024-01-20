@@ -12,7 +12,7 @@ export const createDatabase = async () => {
 	const url =
 		process.env.NODE_ENV === "test" ? "https://esm.sh/@vlcn.io/crsqlite-wasm@0.16.0" : wasmUrl;
 	const sqlite = await initWasm(() => url);
-	connection = await sqlite.open(":memory:");
+	connection = await sqlite.open("test.db");
 
 	try {
 		await migrate(db);

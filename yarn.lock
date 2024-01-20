@@ -1533,16 +1533,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bits-ui@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "bits-ui@npm:0.14.0"
+"bits-ui@npm:^0.15.1":
+  version: 0.15.1
+  resolution: "bits-ui@npm:0.15.1"
   dependencies:
     "@internationalized/date": "npm:^3.5.1"
     "@melt-ui/svelte": "npm:0.68.0"
     nanoid: "npm:^5.0.4"
   peerDependencies:
     svelte: ^4.0.0
-  checksum: 1233815b6873568301019a4ea91f81983153fc78e2704d0b3546c4fb359178a0d24ff43fe8273658916d76352bd7269c5f0fc15799bd7a0dbefc0e236f2d1303
+  checksum: bac6cd52352e4ed70088d53e0c67b641873fea1b9aebe0c507384513c582e3224e956b1b1622e4718328feca7abfe1e554464f1484567fb8ce440bd7359f98cb
   languageName: node
   linkType: hard
 
@@ -1604,7 +1604,7 @@ __metadata:
     "@vlcn.io/crsqlite-wasm": "npm:^0.16.0"
     autoprefixer: "npm:^10.4.17"
     beachball: "npm:^2.39.0"
-    bits-ui: "npm:^0.14.0"
+    bits-ui: "npm:^0.15.1"
     clsx: "npm:^2.1.0"
     drizzle-kit: "npm:^0.20.13"
     drizzle-orm: "patch:drizzle-orm@npm%3A0.29.3#~/.yarn/patches/drizzle-orm-npm-0.29.3-7722ef1a7c.patch"
