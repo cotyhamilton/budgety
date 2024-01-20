@@ -1,12 +1,28 @@
 <script lang="ts">
-	import { Select as SelectPrimitive } from "bits-ui";
+	import { cn } from "$lib/utils";
 
-	type $$Props = SelectPrimitive.Props;
+	export let value: string | number | bigint | boolean | null | undefined = undefined;
+	export { className as class };
 
-	export let selected: $$Props["selected"] = undefined;
-	export let open: $$Props["open"] = undefined;
+	let className: string;
 </script>
 
-<SelectPrimitive.Root bind:selected bind:open {...$$restProps}>
+<select
+	class={cn(
+		"block appearance-none h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+		className
+	)}
+	bind:value
+	{...$$restProps}
+>
 	<slot />
-</SelectPrimitive.Root>
+</select>
+
+<style>
+	select {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(0, 0, 0, .5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+		background-position: center right 0.75rem;
+		background-size: 1rem auto;
+		background-repeat: no-repeat;
+	}
+</style>

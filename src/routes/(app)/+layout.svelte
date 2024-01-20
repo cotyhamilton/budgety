@@ -1,31 +1,24 @@
 <script>
 	import { dev } from "$app/environment";
-	import { goto } from "$app/navigation";
 	import { Button } from "$lib/components/ui/button";
 	import * as Drawer from "$lib/components/ui/drawer";
 	import { Separator } from "$lib/components/ui/separator";
-	import { accounts } from "$lib/stores/account";
+	import { accounts, currentAccount } from "$lib/stores/account";
 	import { Bug } from "lucide-svelte";
-	import { onMount } from "svelte";
 	import AccountNavigation from "./account-navigation.svelte";
 	import Debugger from "./debugger.svelte";
 	import Navigation from "./navigation.svelte";
 
-	onMount(async () => {
-		// send user to create account if none found
-		await accounts.reload?.();
+	export let data;
 
-		if ($accounts.length === 0) {
-			goto("/create-account");
-		}
-	});
+	// set initial store values;
+	$accounts = data.accounts;
+	$currentAccount = data.currentAccount || $accounts[0];
 </script>
 
-{#if $accounts.length}
-	<Navigation />
-	<AccountNavigation />
-	<Separator class="my-4" />
-{/if}
+<Navigation />
+<AccountNavigation />
+<Separator class="my-4" />
 
 <slot />
 

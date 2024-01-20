@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-	import * as Form from "$lib/components/ui/form";
+	import { Button } from "../lib/components/ui/button";
 </script>
 
 <div
@@ -11,7 +10,7 @@
 			<div class="flex flex-col space-y-2 text-center">
 				<h1 class="text-2xl font-semibold tracking-tight">budgety 💰</h1>
 			</div>
-			<Form.Button on:click={() => goto("/accounts")}>log in</Form.Button>
+			<a href="/accounts"><Button class="w-full">log in</Button></a>
 		</div>
 	</div>
 </div>
