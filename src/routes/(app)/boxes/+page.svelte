@@ -3,7 +3,7 @@
 	import { convertFromSubunits, formatter } from "$lib/currencies";
 	import { currentAccount } from "$lib/stores/account";
 	import { boxes } from "$lib/stores/boxes";
-	import NewBoxModal from "./NewBoxModal.svelte";
+	import NewBoxModal from "./new-box-modal.svelte";
 </script>
 
 <svelte:head>

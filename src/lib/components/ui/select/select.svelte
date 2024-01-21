@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import type { HTMLSelectAttributes } from "svelte/elements";
+	import type { InputEvents } from ".";
 
 	type $$Props = HTMLSelectAttributes;
-
-	export let value: $$Props["value"] = undefined;
-	export { className as class };
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	type $$Events = InputEvents;
 
 	let className: $$Props["class"] = undefined;
+	export let value: $$Props["value"] = undefined;
+	export { className as class };
 </script>
 
 <select
@@ -16,6 +18,16 @@
 		className
 	)}
 	bind:value
+	on:blur
+	on:change
+	on:click
+	on:focus
+	on:keydown
+	on:keypress
+	on:keyup
+	on:mouseover
+	on:mouseenter
+	on:mouseleave
 	{...$$restProps}
 >
 	<slot />
