@@ -112,17 +112,10 @@
 					<option value="credit">credit</option>
 				</Select>
 			</div>
-
-			{#if /Mobi|Android/i.test(navigator.userAgent)}
-				<div class="grid items-center gap-4">
-					<Label for="date">date</Label>
-					<input type="date" />
-				</div>
-			{:else}
+			<div class="grid items-center gap-4">
 				<Label for="date">date</Label>
 				<DatePicker bind:value={date} />
-			{/if}
-
+			</div>
 			<div class="grid items-center gap-4">
 				<Label for="amount">amount</Label>
 				<Input id="amount" type="number" bind:value={amount} />
