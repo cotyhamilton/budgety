@@ -22,6 +22,7 @@
 		"migrate:create": "drizzle-kit generate:sqlite"
 	},
 	"devDependencies": {
+		"@internationalized/date": "^3.5.1",
 		"@playwright/test": "^1.41.0",
 		"@square/svelte-store": "^1.0.17",
 		"@sveltejs/adapter-static": "^3.0.0",
@@ -63,8 +64,5 @@
 		"vitest": "^1.2.1"
 	},
 	"type": "module",
-	"packageManager": "yarn@4.0.2",
-	"dependencies": {
-		"@internationalized/date": "^3.5.1"
-	}
+	"packageManager": "yarn@4.0.2"
 }
