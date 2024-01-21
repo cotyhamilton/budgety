@@ -31,6 +31,7 @@ export const transactions = sqliteTable(
 		amount: integer("amount").notNull(),
 		box: integer("box").references(() => boxes.id),
 		financialAccount: integer("financial_account").references(() => financialAccounts.id),
+		merchant: text("merchant"),
 		date: text("date")
 			.default(sql`CURRENT_DATE`)
 			.notNull(),

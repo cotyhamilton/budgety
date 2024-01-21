@@ -1592,6 +1592,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "budgety@workspace:."
   dependencies:
+    "@internationalized/date": "npm:^3.5.1"
     "@playwright/test": "npm:^1.41.0"
     "@square/svelte-store": "npm:^1.0.17"
     "@sveltejs/adapter-static": "npm:^3.0.0"

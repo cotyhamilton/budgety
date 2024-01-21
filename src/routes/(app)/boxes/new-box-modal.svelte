@@ -37,20 +37,19 @@
 	<Dialog.Content class="sm:max-w-[425px]">
 		<Dialog.Header>
 			<Dialog.Title>add box</Dialog.Title>
-			<Dialog.Description>box details</Dialog.Description>
 		</Dialog.Header>
 		<div class="grid gap-4 py-4">
-			<div class="grid grid-cols-4 items-center gap-4">
-				<Label class="text-right">name</Label>
-				<Input id="name" type="text" class="col-span-3" bind:value={name} />
+			<div class="grid items-center gap-4">
+				<Label for="name">name</Label>
+				<Input id="name" type="text" bind:value={name} />
 			</div>
-			<div class="grid grid-cols-4 items-center gap-4">
-				<Label class="text-right">goal</Label>
-				<Input id="amount" type="number" class="col-span-3" bind:value={goal} />
+			<div class="grid items-center gap-4">
+				<Label for="goal">goal</Label>
+				<Input id="goal" type="number" bind:value={goal} />
 			</div>
 		</div>
 		<Dialog.Footer>
-			<Button on:click={saveBox} type="submit">Save changes</Button>
+			<Button class="w-full" on:click={saveBox} type="submit">Save changes</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

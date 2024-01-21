@@ -3,7 +3,7 @@
 	import { convertFromSubunits, formatter } from "$lib/currencies";
 	import { currentAccount } from "$lib/stores/account";
 	import { transactions } from "$lib/stores/transaction";
-	import NewTxModal from "./NewTxModal.svelte";
+	import NewTxModal from "./new-tx-modal.svelte";
 
 	const formatDate = (isoString: string) => {
 		const [year, month, day] = isoString.split("-");
