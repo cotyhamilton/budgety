@@ -3,6 +3,7 @@
 	import * as Dialog from "$lib/components/ui/dialog";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
+	import { Switch } from "$lib/components/ui/switch";
 	import { convertToSubunits } from "$lib/currencies";
 	import { box } from "$lib/models/box";
 	import { currentAccount } from "$lib/stores/account";
@@ -10,21 +11,28 @@
 	import { PlusCircled } from "radix-icons-svelte";
 
 	let name: string;
-	let goal: number;
+	let goal: number | undefined;
 	let open: boolean;
+	let fill = true;
 
 	const saveBox = async () => {
 		box.createBox({
 			name,
-			balance: 0,
-			goal: convertToSubunits(goal, $currentAccount.currencyDecimals),
+			balance: fill ? convertToSubunits(goal ?? 0, $currentAccount.currencyDecimals) : 0,
+			goal: convertToSubunits(goal ?? 0, $currentAccount.currencyDecimals),
 			financialAccount: $currentAccount.id
 		});
 		boxes.reload?.();
-		name = "";
-		goal = 0;
 		open = false;
 	};
+
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const resetForm = async (_toggle?: boolean) => {
+		name = "";
+		goal = undefined;
+	};
+
+	$: resetForm(open);
 </script>
 
 <Dialog.Root bind:open>
@@ -47,9 +55,13 @@
 				<Label for="goal">goal</Label>
 				<Input id="goal" type="number" bind:value={goal} />
 			</div>
+			<div class="grid items-center gap-4">
+				<Label for="fill">fill up now</Label>
+				<Switch id="fill" bind:checked={fill} />
+			</div>
 		</div>
 		<Dialog.Footer>
-			<Button class="w-full" on:click={saveBox} type="submit">Save changes</Button>
+			<Button class="w-full" on:click={saveBox} type="submit">save</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>
