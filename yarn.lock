@@ -84,12 +84,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.23.5":
+"@babel/runtime@npm:^7.12.5":
   version: 7.23.5
   resolution: "@babel/runtime@npm:7.23.5"
   dependencies:
     regenerator-runtime: "npm:^0.14.0"
   checksum: ca679cc91bb7e424bc2db87bb58cc3b06ade916b9adb21fbbdc43e54cdaacb3eea201ceba2a0464b11d2eb65b9fe6a6ffcf4d7521fa52994f19be96f1af14788
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.23.7":
+  version: 7.23.8
+  resolution: "@babel/runtime@npm:7.23.8"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: ba5e8fbb32ef04f6cab5e89c54a0497c2fde7b730595cc1af93496270314f13ff2c6a9360fdb2f0bdd4d6b376752ce3cf85642bd6b876969a6a62954934c2df8
   languageName: node
   linkType: hard
 
@@ -717,14 +726,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.41.0":
-  version: 1.41.0
-  resolution: "@playwright/test@npm:1.41.0"
+"@playwright/test@npm:^1.41.1":
+  version: 1.41.1
+  resolution: "@playwright/test@npm:1.41.1"
   dependencies:
-    playwright: "npm:1.41.0"
+    playwright: "npm:1.41.1"
   bin:
     playwright: cli.js
-  checksum: f6b1934b84cf10a356b356b8b9d43271d479c7292deaf5c6dc1742d8d5f28e86f6bef83a79a8eb0d557dc30377b1c33d3613dd6ddbbf31f21d5ebe92c65b1608
+  checksum: 72bd5bb67c512027d214b9c54c2a22a469bd19d7809771e53a5bfdcc11330591e01579bb22f807d1ebbcdcea35d625e0fc9eb9791cebcc63bf55b82dd1cdefdd
   languageName: node
   linkType: hard
 
@@ -853,9 +862,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^2.3.4":
-  version: 2.3.4
-  resolution: "@sveltejs/kit@npm:2.3.4"
+"@sveltejs/kit@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@sveltejs/kit@npm:2.4.1"
   dependencies:
     "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^0.6.0"
@@ -875,7 +884,7 @@ __metadata:
     vite: ^5.0.3
   bin:
     svelte-kit: svelte-kit.js
-  checksum: 761da8fa21ce94d9dd7da46ae53f2fadd888db3915c95b3df1ad6dfca5ef12fde96fa8b390c1563085b5ca388ea5d30e319068a24eb480b4cf8aae3e86d9fab6
+  checksum: 338fc18746a750e773ab6004030cf3cd1fb39842c6bd760fcfe84b1d1dfda1ee4117aacd7cffeb54ce6b7f07d7bbc89586669c4b652b3d9b1d4bae535e0d1137
   languageName: node
   linkType: hard
 
@@ -1593,10 +1602,10 @@ __metadata:
   resolution: "budgety@workspace:."
   dependencies:
     "@internationalized/date": "npm:^3.5.1"
-    "@playwright/test": "npm:^1.41.0"
+    "@playwright/test": "npm:^1.41.1"
     "@square/svelte-store": "npm:^1.0.17"
     "@sveltejs/adapter-static": "npm:^3.0.0"
-    "@sveltejs/kit": "npm:^2.3.4"
+    "@sveltejs/kit": "npm:^2.4.1"
     "@sveltejs/vite-plugin-svelte": "npm:^3.0.0"
     "@testing-library/svelte": "npm:^4.0.5"
     "@typescript-eslint/eslint-plugin": "npm:^6.19.0"
@@ -1615,7 +1624,7 @@ __metadata:
     eslint-plugin-svelte: "npm:^2.35.1"
     formsnap: "npm:^0.4.2"
     jsdom: "npm:^23.2.0"
-    lucide-svelte: "npm:^0.312.0"
+    lucide-svelte: "npm:^0.314.0"
     postcss: "npm:^8.4.33"
     postcss-load-config: "npm:^5.0.2"
     prettier: "npm:^3.2.4"
@@ -1623,13 +1632,13 @@ __metadata:
     radix-icons-svelte: "npm:^1.2.1"
     svelte: "npm:^4.2.9"
     svelte-check: "npm:^3.6.3"
-    sveltekit-superforms: "npm:^1.13.3"
-    tailwind-merge: "npm:^2.2.0"
+    sveltekit-superforms: "npm:^1.13.4"
+    tailwind-merge: "npm:^2.2.1"
     tailwind-variants: "npm:^0.1.20"
     tailwindcss: "npm:^3.4.1"
     tslib: "npm:^2.4.1"
     typescript: "npm:^5.3.3"
-    vaul-svelte: "npm:^0.0.7"
+    vaul-svelte: "npm:^0.1.0"
     vite: "npm:^5.0.12"
     vitest: "npm:^1.2.1"
   languageName: unknown
@@ -4202,12 +4211,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-svelte@npm:^0.312.0":
-  version: 0.312.0
-  resolution: "lucide-svelte@npm:0.312.0"
+"lucide-svelte@npm:^0.314.0":
+  version: 0.314.0
+  resolution: "lucide-svelte@npm:0.314.0"
   peerDependencies:
     svelte: ">=3 <5"
-  checksum: 8d8e622a9dfc63b6c10e07b644b708cde40869bbf2a2170286d2e9b0554f72ce9d4bc6a2e5bd8d97e41f74efbc2c5fb37668d91031c1047914352cfb2499a573
+  checksum: 2fb51c18bc6e2419efd4d61ba6d9c2024cb46977a10ba1a993d7e8baa3aa9e2c982ccc31151dbf9c97006894feed385b3c60073f3fc11175b7b55695dede922a
   languageName: node
   linkType: hard
 
@@ -4961,27 +4970,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.41.0":
-  version: 1.41.0
-  resolution: "playwright-core@npm:1.41.0"
+"playwright-core@npm:1.41.1":
+  version: 1.41.1
+  resolution: "playwright-core@npm:1.41.1"
   bin:
     playwright-core: cli.js
-  checksum: ea74d755c9c8cfec53566fb8ca689b55b493bf67d49ad631c39669006d018e1127688d31a689ef05672d7ae7f9ebb8c3aef92dbe31636c3c3826d4cb90c14cf2
+  checksum: cdd91267ca23e3f65d519100e956859c70e3e9ca29e3fe00e700b457903129e41dfa17752f1ea37ad0a8a7c6330baf9f3be503e4cbfa3e8833e80a037f899aee
   languageName: node
   linkType: hard
 
-"playwright@npm:1.41.0":
-  version: 1.41.0
-  resolution: "playwright@npm:1.41.0"
+"playwright@npm:1.41.1":
+  version: 1.41.1
+  resolution: "playwright@npm:1.41.1"
   dependencies:
     fsevents: "npm:2.3.2"
-    playwright-core: "npm:1.41.0"
+    playwright-core: "npm:1.41.1"
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: db12f408c02326ba9efdd7d6c10b9d7509e85cddf99d8043a2fe0d24322a4129ed6c958c301cc99b39c28b335fe659e9dc30b31f2af7fc1428207aa0ba1c9180
+  checksum: 32d48c1f8ff881770a19c9245fb4191fc36b5e97ab5f48effa0b1cf5e83fa958f6fdd7e4268dd984aa306ac5fe9e4324510211910751fb52cebb9bae819d13ca
   languageName: node
   linkType: hard
 
@@ -5936,9 +5945,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sveltekit-superforms@npm:^1.13.3":
-  version: 1.13.3
-  resolution: "sveltekit-superforms@npm:1.13.3"
+"sveltekit-superforms@npm:^1.13.4":
+  version: 1.13.4
+  resolution: "sveltekit-superforms@npm:1.13.4"
   dependencies:
     devalue: "npm:^4.3.2"
     klona: "npm:^2.0.6"
@@ -5946,7 +5955,7 @@ __metadata:
     "@sveltejs/kit": 1.x || 2.x
     svelte: 3.x || 4.x
     zod: 3.x
-  checksum: 45fc5da8913406c521c0cd7804b167e6dcaa7e1b474cae2a855af280e84833b9b229ace64058685f7e3c0dfad7df007514554de7fe5eea0a7604f9444a00f3a0
+  checksum: f99c1a9176592fd9e0e03e07567444c94ddfda061b029501c0f2d6c53254e8f3cb138c781b638ab33ee82dc44ef8b542af011f27543d5ea7a98262cd92681d22
   languageName: node
   linkType: hard
 
@@ -5971,12 +5980,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "tailwind-merge@npm:2.2.0"
+"tailwind-merge@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "tailwind-merge@npm:2.2.1"
   dependencies:
-    "@babel/runtime": "npm:^7.23.5"
-  checksum: 41476d686af101c770401f4db509ffea9ec13bf99fd18185903dd86df2b71b3f512d9373b0f2785cb9e9abf093f39373327a29e9b3dde643b9daf7062f77c4ba
+    "@babel/runtime": "npm:^7.23.7"
+  checksum: 14ab965ec897e9377484b7593f7a700dde09b8035b762ad42652622a3ed1f202b203f48c0f235c0b1b38e9390470d94458f6f9010d33a5a18d71b15f38b986a6
   languageName: node
   linkType: hard
 
@@ -6345,14 +6354,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vaul-svelte@npm:^0.0.7":
-  version: 0.0.7
-  resolution: "vaul-svelte@npm:0.0.7"
+"vaul-svelte@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "vaul-svelte@npm:0.1.0"
   dependencies:
     bits-ui: "npm:^0.13.3"
   peerDependencies:
     svelte: ^4.0.0
-  checksum: 2bc2f2afb89399f158d3cde28826cd371d12eccb09f1e696d47732b51202930886cffd466889390ff0e47783814f679d4f8b4f18470942c5d809c8d47a2de6da
+  checksum: 14b469180b9f664d4b171d70dd8c8506c9755d453db93b24aebb4fa1b7275af5dcff651ae4aadcc2cc91aeb1732eaae67e2555a18377e0326caa2da1e39d3b53
   languageName: node
   linkType: hard
 
