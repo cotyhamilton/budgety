@@ -8,7 +8,7 @@ test("can create box", async ({ page, navigation }) => {
 	await page.locator("#name").fill("coffee");
 	await page.locator("#goal").click();
 	await page.locator("#goal").fill("100");
-	await page.getByRole("button", { name: "Save changes" }).click();
+	await page.getByRole("button", { name: "save" }).click();
 
-	await expect(page.getByText("coffee $0.00 / $100.00")).toBeVisible();
+	await expect(page.getByText("$100.00 / $100.00")).toBeVisible();
 });

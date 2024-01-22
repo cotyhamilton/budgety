@@ -9,7 +9,7 @@ test("can create transaction", async ({ page, navigation }) => {
 	await page.locator("#name").fill("☕️ coffee");
 	await page.locator("#goal").click();
 	await page.locator("#goal").fill("100");
-	await page.getByRole("button", { name: "Save changes" }).click();
+	await page.getByRole("button", { name: "save" }).click();
 
 	await page.getByRole("link", { name: "transactions" }).click();
 	await page.getByText("add transaction").click();
@@ -20,5 +20,5 @@ test("can create transaction", async ({ page, navigation }) => {
 	await page.getByRole("button", { name: "Save changes" }).click();
 	await page.getByRole("link", { name: "boxes" }).click();
 
-	await expect(page.getByText("☕️ coffee -$7.99 / $100.00")).toBeVisible();
+	await expect(page.getByText("$92.01 / $100.00")).toBeVisible();
 });
