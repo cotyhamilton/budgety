@@ -44,7 +44,7 @@
 		"eslint-plugin-square-svelte-store": "^1.0.0",
 		"eslint-plugin-svelte": "^2.35.1",
 		"formsnap": "^0.4.3",
-		"jsdom": "^23.2.0",
+		"jsdom": "^24.0.0",
 		"lucide-svelte": "^0.314.0",
 		"postcss": "^8.4.33",
 		"postcss-load-config": "^5.0.2",
