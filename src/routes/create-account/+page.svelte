@@ -5,7 +5,8 @@
 	import { Label } from "$lib/components/ui/label";
 	import { Select } from "$lib/components/ui/select";
 	import { convertToSubunits, currencies } from "$lib/currencies";
-	import { financialAccount } from "$lib/models/financialAccount";
+	import { db } from "$lib/db/client";
+	import { financialAccounts } from "$lib/db/schema";
 	import { transaction } from "$lib/models/transaction";
 	import { accounts, currentAccount } from "$lib/stores/account";
 
@@ -15,11 +16,11 @@
 
 	// save account and redirect to accounts page
 	const saveAccount = async () => {
-		await financialAccount.createFinancialAccount({
-			name,
-			currencyCode,
-			currencyDecimals: currencies[currencyCode].decimals
-		});
+		await db
+			.insert(financialAccounts)
+			.values([{ name, currencyCode, currencyDecimals: currencies[currencyCode].decimals }])
+			.returning()
+			.get();
 		// update accounts store
 		await accounts.reload?.();
 		// save new account as current account

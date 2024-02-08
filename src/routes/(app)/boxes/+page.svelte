@@ -47,7 +47,7 @@
 					)}
 					<Progress
 						class="mt-3"
-						value={(box.balance / box.goal) * 100 ?? 1}
+						value={(box.balance / box.goal) * 100 > 2 ? (box.balance / box.goal) * 100 : 2}
 						max={100}
 						subClass={box.balance >= box.goal ? "bg-green-500" : "bg-yellow-500"}
 					/>

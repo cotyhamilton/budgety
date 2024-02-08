@@ -1,7 +1,7 @@
 import { db } from "$lib/db/client";
 import { boxes, transactions } from "$lib/db/schema";
 import type { TransactionCreate } from "$lib/types";
-import { desc, eq, sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 const createTransaction = async ({
 	name,
@@ -40,19 +40,6 @@ const createTransaction = async ({
 	}
 };
 
-const getTransactions = async () => {
-	return await db.query.transactions.findMany({
-		with: { box: true },
-		orderBy: [desc(transactions.date)]
-	});
-};
-
-const getTransactionById = async (id: number) => {
-	return await db.select().from(transactions).where(eq(transactions.id, id)).get();
-};
-
 export const transaction = {
-	createTransaction,
-	getTransactions,
-	getTransactionById
+	createTransaction
 };

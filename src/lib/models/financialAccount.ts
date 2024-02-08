@@ -1,28 +1,6 @@
 import { db } from "$lib/db/client";
-import { boxes, financialAccounts, transactions } from "$lib/db/schema";
+import { boxes, transactions } from "$lib/db/schema";
 import { and, eq, sum } from "drizzle-orm";
-import type { FinancialAccountCreate } from "../types";
-
-const createFinancialAccount = async ({
-	name,
-	currencyCode,
-	currencyDecimals,
-	isPrimary = false
-}: FinancialAccountCreate) => {
-	return await db
-		.insert(financialAccounts)
-		.values([{ name, currencyCode, currencyDecimals, isPrimary }])
-		.returning()
-		.get();
-};
-
-const getFinancialAccounts = async () => {
-	return await db.select().from(financialAccounts);
-};
-
-const getFinancialAccountById = async (id: number) => {
-	return await db.select().from(financialAccounts).where(eq(financialAccounts.id, id)).get();
-};
 
 export const getBalanceForAccountId = async (id: number) => {
 	return await db
@@ -53,9 +31,6 @@ export const getAllBalancesForAccountId = async (id: number) => {
 };
 
 export const financialAccount = {
-	createFinancialAccount,
-	getFinancialAccounts,
-	getFinancialAccountById,
 	getBalanceForAccountId,
 	getBoxesBalanceForAccountId,
 	getAllBalancesForAccountId

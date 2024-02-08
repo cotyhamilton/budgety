@@ -5,7 +5,8 @@
 	import { Label } from "$lib/components/ui/label";
 	import { Switch } from "$lib/components/ui/switch";
 	import { convertToSubunits } from "$lib/currencies";
-	import { box } from "$lib/models/box";
+	import { db } from "$lib/db/client";
+	import { boxes as schema } from "$lib/db/schema";
 	import { currentAccount } from "$lib/stores/account";
 	import { boxes } from "$lib/stores/boxes";
 	import { PlusCircled } from "radix-icons-svelte";
@@ -16,12 +17,18 @@
 	let fill = true;
 
 	const saveBox = async () => {
-		box.createBox({
-			name,
-			balance: fill ? convertToSubunits(goal ?? 0, $currentAccount.currencyDecimals) : 0,
-			goal: convertToSubunits(goal ?? 0, $currentAccount.currencyDecimals),
-			financialAccount: $currentAccount.id
-		});
+		await db
+			.insert(schema)
+			.values([
+				{
+					name,
+					balance: fill ? convertToSubunits(goal ?? 0, $currentAccount.currencyDecimals) : 0,
+					goal: convertToSubunits(goal ?? 0, $currentAccount.currencyDecimals),
+					financialAccount: $currentAccount.id
+				}
+			])
+			.returning()
+			.get();
 		boxes.reload?.();
 		open = false;
 	};
