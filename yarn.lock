@@ -521,6 +521,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gcornut/valibot-json-schema@npm:^0.0.22":
+  version: 0.0.22
+  resolution: "@gcornut/valibot-json-schema@npm:0.0.22"
+  peerDependencies:
+    "@types/json-schema": ">= 7.0.14"
+    esbuild: ">= 0.18.20"
+    esbuild-runner: ">= 2.2.2"
+    valibot: ">= 0.21.0"
+  bin:
+    valibot-json-schema: bin/index.js
+  checksum: e0aec742b6353abff2d3c8794a5de14540070b9f5f53e28e29a076ee729376335f9d4738c203ef3a1227e8fbf636f9d0447577cfca4ba1ae166553099d197cb2
+  languageName: node
+  linkType: hard
+
+"@hapi/hoek@npm:^9.0.0, @hapi/hoek@npm:^9.3.0":
+  version: 9.3.0
+  resolution: "@hapi/hoek@npm:9.3.0"
+  checksum: a096063805051fb8bba4c947e293c664b05a32b47e13bc654c0dd43813a1cec993bdd8f29ceb838020299e1d0f89f68dc0d62a603c13c9cc8541963f0beca055
+  languageName: node
+  linkType: hard
+
+"@hapi/topo@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@hapi/topo@npm:5.1.0"
+  dependencies:
+    "@hapi/hoek": "npm:^9.0.0"
+  checksum: b16b06d9357947149e032bdf10151eb71aea8057c79c4046bf32393cb89d0d0f7ca501c40c0f7534a5ceca078de0700d2257ac855c15e59fe4e00bba2f25c86f
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.13
   resolution: "@humanwhocodes/config-array@npm:0.11.13"
@@ -824,10 +854,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sideway/address@npm:^4.1.5":
+  version: 4.1.5
+  resolution: "@sideway/address@npm:4.1.5"
+  dependencies:
+    "@hapi/hoek": "npm:^9.0.0"
+  checksum: 638eb6f7e7dba209053dd6c8da74d7cc995e2b791b97644d0303a7dd3119263bcb7225a4f6804d4db2bc4f96e5a9d262975a014f58eae4d1753c27cbc96ef959
+  languageName: node
+  linkType: hard
+
+"@sideway/formula@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@sideway/formula@npm:3.0.1"
+  checksum: 3fe81fa9662efc076bf41612b060eb9b02e846ea4bea5bd114f1662b7f1541e9dedcf98aff0d24400bcb92f113964a50e0290b86e284edbdf6346fa9b7e2bf2c
+  languageName: node
+  linkType: hard
+
+"@sideway/pinpoint@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@sideway/pinpoint@npm:2.0.0"
+  checksum: d2ca75dacaf69b8fc0bb8916a204e01def3105ee44d8be16c355e5f58189eb94039e15ce831f3d544f229889ccfa35562a0ce2516179f3a7ee1bbe0b71e55b36
+  languageName: node
+  linkType: hard
+
 "@sinclair/typebox@npm:^0.27.8":
   version: 0.27.8
   resolution: "@sinclair/typebox@npm:0.27.8"
   checksum: ef6351ae073c45c2ac89494dbb3e1f87cc60a93ce4cde797b782812b6f97da0d620ae81973f104b43c9b7eaa789ad20ba4f6a1359f1cc62f63729a55a7d22d4e
+  languageName: node
+  linkType: hard
+
+"@sinclair/typebox@npm:^0.32.13":
+  version: 0.32.14
+  resolution: "@sinclair/typebox@npm:0.32.14"
+  checksum: ed8dca0ec2983175613237b58d17c69da6fa0af884a393c4a76281063dcae0eb043bf8e150baa88bab294c80cdd901f383f21329b0a2adbbdd9b1dfdf6d7b92d
+  languageName: node
+  linkType: hard
+
+"@sodaru/yup-to-json-schema@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@sodaru/yup-to-json-schema@npm:2.0.1"
+  checksum: eab91d48380d06f82f0a8fdf5aba1c7c1c6ee0ed61fdd7bc60a4141800cac7e8e5ab3fb8bfd009398c53e65e4906d73b82cb0e1e6273919e0e7ba29a5d101978
   languageName: node
   linkType: hard
 
@@ -1399,6 +1466,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"arktype@npm:1.0.29-alpha":
+  version: 1.0.29-alpha
+  resolution: "arktype@npm:1.0.29-alpha"
+  checksum: 4464778866c06c05ef5cd4b55fe9c63afaf8ccc399d0dea1f35e9e47971d4ae30b7be743526c91733c380543699586d33684adefe7af93e39ae8e5513c960a85
+  languageName: node
+  linkType: hard
+
 "array-buffer-byte-length@npm:^1.0.0":
   version: 1.0.0
   resolution: "array-buffer-byte-length@npm:1.0.0"
@@ -1612,7 +1686,7 @@ __metadata:
     radix-icons-svelte: "npm:^1.2.1"
     svelte: "npm:^4.2.10"
     svelte-check: "npm:^3.6.4"
-    sveltekit-superforms: "npm:^1.13.4"
+    sveltekit-superforms: "npm:^2.1.0"
     tailwind-merge: "npm:^2.2.1"
     tailwind-variants: "npm:^0.2.0"
     tailwindcss: "npm:^3.4.1"
@@ -3920,6 +3994,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"joi@npm:^17.12.1":
+  version: 17.12.1
+  resolution: "joi@npm:17.12.1"
+  dependencies:
+    "@hapi/hoek": "npm:^9.3.0"
+    "@hapi/topo": "npm:^5.1.0"
+    "@sideway/address": "npm:^4.1.5"
+    "@sideway/formula": "npm:^3.0.1"
+    "@sideway/pinpoint": "npm:^2.0.0"
+  checksum: 552ec235a4fb068290f85c8248e0afc6a8fa91a33d7fd7552fa1f1d8682b5d2d0f0c29901b6843d7936f1e15e8bf0a537126ccb01fa72cf0eb626ff1a0a77a73
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -4033,6 +4120,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"just-clone@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "just-clone@npm:6.2.0"
+  checksum: 5e412b2739dae9dd9dc6cbdb77d03adaad9f8180250b3c04efdbbb0aacb9e7d389699d112606f961256db6af1ec31060f272cb9df6e16075b22bad5eef5e1977
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.5.3":
   version: 4.5.3
   resolution: "keyv@npm:4.5.3"
@@ -4053,13 +4147,6 @@ __metadata:
   version: 4.1.5
   resolution: "kleur@npm:4.1.5"
   checksum: e9de6cb49657b6fa70ba2d1448fd3d691a5c4370d8f7bbf1c2f64c24d461270f2117e1b0afe8cb3114f13bbd8e51de158c2a224953960331904e636a5e4c0f2a
-  languageName: node
-  linkType: hard
-
-"klona@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "klona@npm:2.0.6"
-  checksum: 94eed2c6c2ce99f409df9186a96340558897b3e62a85afdc1ee39103954d2ebe1c1c4e9fe2b0952771771fa96d70055ede8b27962a7021406374fdb695fd4d01
   languageName: node
   linkType: hard
 
@@ -4270,6 +4357,13 @@ __metadata:
   version: 2.0.30
   resolution: "mdn-data@npm:2.0.30"
   checksum: a2c472ea16cee3911ae742593715aa4c634eb3d4b9f1e6ada0902aa90df13dcbb7285d19435f3ff213ebaa3b2e0c0265c1eb0e3fb278fda7f8919f046a410cd9
+  languageName: node
+  linkType: hard
+
+"memoize-weak@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "memoize-weak@npm:1.0.2"
+  checksum: ba2dce851485058241c098a0217d95e7260a51b343d35aa08e4f1653c0f7012b5e65c8d06ba4c9f10fe19f4269b379f27e370908daa792dbdfaf8e7de2324bdb
   languageName: node
   linkType: hard
 
@@ -5202,6 +5296,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"property-expr@npm:^2.0.5":
+  version: 2.0.6
+  resolution: "property-expr@npm:2.0.6"
+  checksum: 69b7da15038a1146d6447c69c445306f66a33c425271235bb20507f1846dbf9577a8f9dfafe8acbfcb66f924b270157f155248308f026a68758f35fc72265b3c
+  languageName: node
+  linkType: hard
+
 "protocols@npm:^2.0.0, protocols@npm:^2.0.1":
   version: 2.0.1
   resolution: "protocols@npm:2.0.1"
@@ -5796,6 +5897,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"superstruct@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "superstruct@npm:1.0.3"
+  checksum: 45ed9c41016641161a2ed93723d2cf6efc6fb2552ebb747b8df94cb73a37acd95288baad42c2d51ffe77956caf5c5200cd22622e166c6951777acd2fb11a7da5
+  languageName: node
+  linkType: hard
+
 "supports-color@npm:^5.3.0":
   version: 5.5.0
   resolution: "supports-color@npm:5.5.0"
@@ -5936,17 +6044,71 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sveltekit-superforms@npm:^1.13.4":
-  version: 1.13.4
-  resolution: "sveltekit-superforms@npm:1.13.4"
+"sveltekit-superforms@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "sveltekit-superforms@npm:2.1.0"
   dependencies:
+    "@gcornut/valibot-json-schema": "npm:^0.0.22"
+    "@sinclair/typebox": "npm:^0.32.13"
+    "@sodaru/yup-to-json-schema": "npm:^2.0.1"
+    arktype: "npm:1.0.29-alpha"
     devalue: "npm:^4.3.2"
-    klona: "npm:^2.0.6"
+    joi: "npm:^17.12.1"
+    just-clone: "npm:^6.2.0"
+    memoize-weak: "npm:^1.0.2"
+    superstruct: "npm:^1.0.3"
+    ts-deepmerge: "npm:^7.0.0"
+    valibot: "npm:^0.28.1"
+    yup: "npm:^1.3.3"
+    zod: "npm:^3.22.4"
+    zod-to-json-schema: "npm:^3.22.4"
   peerDependencies:
+    "@sinclair/typebox": ^0.32.13
     "@sveltejs/kit": 1.x || 2.x
-    svelte: 3.x || 4.x
-    zod: 3.x
-  checksum: f99c1a9176592fd9e0e03e07567444c94ddfda061b029501c0f2d6c53254e8f3cb138c781b638ab33ee82dc44ef8b542af011f27543d5ea7a98262cd92681d22
+    arktype: 1.0.29-alpha
+    joi: ^17.12.1
+    superstruct: ^1.0.3
+    svelte: 3.x || 4.x || >=5.0.0-next.51
+    valibot: ^0.28.1
+    yup: ^1.3.3
+    zod: ^3.22.4
+  dependenciesMeta:
+    "@gcornut/valibot-json-schema":
+      optional: true
+    "@sinclair/typebox":
+      optional: true
+    "@sodaru/yup-to-json-schema":
+      optional: true
+    arktype:
+      optional: true
+    joi:
+      optional: true
+    superstruct:
+      optional: true
+    valibot:
+      optional: true
+    yup:
+      optional: true
+    zod:
+      optional: true
+    zod-to-json-schema:
+      optional: true
+  peerDependenciesMeta:
+    "@sinclair/typebox":
+      optional: true
+    arktype:
+      optional: true
+    joi:
+      optional: true
+    superstruct:
+      optional: true
+    valibot:
+      optional: true
+    yup:
+      optional: true
+    zod:
+      optional: true
+  checksum: b1a8b4a814c97458e51cc287a1e34ab5daf38eebdfd02dce5252a087baab593b36a2b5d9f44258de336724ac5cefc847aff19028bc60bdd434973d89ec4bea38
   languageName: node
   linkType: hard
 
@@ -6077,6 +6239,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tiny-case@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "tiny-case@npm:1.0.3"
+  checksum: c0cbed35884a322265e2cd61ff435168d1ea523f88bf3864ce14a238ae9169e732649776964283a66e4eb882e655992081d4daf8c865042e2233425866111b35
+  languageName: node
+  linkType: hard
+
 "tiny-glob@npm:^0.2.9":
   version: 0.2.9
   resolution: "tiny-glob@npm:0.2.9"
@@ -6168,6 +6337,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-deepmerge@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "ts-deepmerge@npm:7.0.0"
+  checksum: 60a7a068b98d3de57e76897e2a8ea2dec0a74b10a9a3869e1bb512f2ff9f9769cb6b37713f3320a386bbca6140268ab77bae26d65b3e48231227e7643700bc82
+  languageName: node
+  linkType: hard
+
 "ts-interface-checker@npm:^0.1.9":
   version: 0.1.13
   resolution: "ts-interface-checker@npm:0.1.13"
@@ -6202,6 +6378,13 @@ __metadata:
   version: 0.20.2
   resolution: "type-fest@npm:0.20.2"
   checksum: dea9df45ea1f0aaa4e2d3bed3f9a0bfe9e5b2592bddb92eb1bf06e50bcf98dbb78189668cd8bc31a0511d3fc25539b4cd5c704497e53e93e2d40ca764b10bfc3
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^2.19.0":
+  version: 2.19.0
+  resolution: "type-fest@npm:2.19.0"
+  checksum: a5a7ecf2e654251613218c215c7493574594951c08e52ab9881c9df6a6da0aeca7528c213c622bc374b4e0cb5c443aa3ab758da4e3c959783ce884c3194e12cb
   languageName: node
   linkType: hard
 
@@ -6335,6 +6518,13 @@ __metadata:
     "@types/istanbul-lib-coverage": "npm:^2.0.1"
     convert-source-map: "npm:^2.0.0"
   checksum: e691ba4dd0dea4a884e52c37dbda30cce6f9eeafe9b26721e449429c6bb0f4b6d1e33fabe7711d0f67f7a34c3bfd56c873f7375bba0b1534e6a2843ce99550e5
+  languageName: node
+  linkType: hard
+
+"valibot@npm:^0.28.1":
+  version: 0.28.1
+  resolution: "valibot@npm:0.28.1"
+  checksum: 139c5e5fc9ec6bb7afbba7bc1e7095c243c5f853838c2c0d07e485d560e7e834aba8c93df84f43980637645a496bf7f9dc9dee6332a981e2a77b222d6ea8fd61
   languageName: node
   linkType: hard
 
@@ -6743,7 +6933,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.20.2":
+"yup@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "yup@npm:1.3.3"
+  dependencies:
+    property-expr: "npm:^2.0.5"
+    tiny-case: "npm:^1.0.3"
+    toposort: "npm:^2.0.2"
+    type-fest: "npm:^2.19.0"
+  checksum: cc00e98af8617b779dd151d6a77779228cfe973a185c743628b2afdecda88c333187d058c1199518d696c15827ba9b757a6c57c1ace6766d970d3cd2368c3264
+  languageName: node
+  linkType: hard
+
+"zod-to-json-schema@npm:^3.22.4":
+  version: 3.22.4
+  resolution: "zod-to-json-schema@npm:3.22.4"
+  peerDependencies:
+    zod: ^3.22.4
+  checksum: a949720c165347982a4abf5d612b78bebc2b5fb1217d22e20c024782ce6a9ae0baffe5deb6ba6f961ffa7b28b888c37f744bbfee6d7e9d74f2ec1f94d6968f0d
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.20.2, zod@npm:^3.22.4":
   version: 3.22.4
   resolution: "zod@npm:3.22.4"
   checksum: 7578ab283dac0eee66a0ad0fc4a7f28c43e6745aadb3a529f59a4b851aa10872b3890398b3160f257f4b6817b4ce643debdda4fb21a2c040adda7862cab0a587
