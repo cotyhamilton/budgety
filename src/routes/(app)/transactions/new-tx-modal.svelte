@@ -19,7 +19,7 @@
 	let amount: number | undefined;
 	let open: boolean;
 	let box: number | null;
-	let type: "credit" | "debit" = "debit";
+	let type: "income" | "expense" = "expense";
 	let merchant: string;
 	let date: DateValue | undefined;
 
@@ -64,7 +64,7 @@
 		name = "";
 		merchant = "";
 		amount = undefined;
-		type = "debit";
+		type = "expense";
 		box = null;
 		date = undefined;
 	};
@@ -73,7 +73,7 @@
 		if (value === 0) {
 			return value;
 		}
-		return type === "credit" ? Math.abs(value) : -Math.abs(value);
+		return type === "income" ? Math.abs(value) : -Math.abs(value);
 	};
 
 	$: resetForm(open);
@@ -105,11 +105,11 @@
 					id="type"
 					bind:value={type}
 					on:change={() => {
-						box = type === "credit" ? null : box;
+						box = type === "income" ? null : box;
 					}}
 				>
-					<option value="debit">debit</option>
-					<option value="credit">credit</option>
+					<option value="expense">expense</option>
+					<option value="income">income</option>
 				</Select>
 			</div>
 			<div class="grid items-center gap-4">
@@ -122,7 +122,7 @@
 			</div>
 			<div class="grid items-center gap-4">
 				<Label for="box">from</Label>
-				<Select id="box" disabled={type === "credit" || $boxes?.length < 1} bind:value={box}>
+				<Select id="box" disabled={type === "income" || $boxes?.length < 1} bind:value={box}>
 					<option value={null}>safe-to-spend</option>
 					{#each $boxes as box}
 						<option value={box.id}>{box.name}</option>
