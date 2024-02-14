@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
 	import * as Dialog from "$lib/components/ui/dialog";
+	import * as Drawer from "$lib/components/ui/drawer";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
 	import { Switch } from "$lib/components/ui/switch";
@@ -9,11 +10,11 @@
 	import { boxes as schema } from "$lib/db/schema";
 	import { currentAccount } from "$lib/stores/account";
 	import { boxes } from "$lib/stores/boxes";
-	import { PlusCircled } from "radix-icons-svelte";
+
+	export let open: boolean;
 
 	let name: string;
 	let goal: number | undefined;
-	let open: boolean;
 	let fill = true;
 
 	const saveBox = async () => {
@@ -33,42 +34,62 @@
 		open = false;
 	};
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const resetForm = async (_toggle?: boolean) => {
+	// reset form
+	$: if (!open) {
 		name = "";
 		goal = undefined;
-	};
-
-	$: resetForm(open);
+		fill = true;
+	}
 </script>
 
-<Dialog.Root bind:open>
-	<Dialog.Trigger
-		><Button>
-			<PlusCircled class="mr-2 h-4 w-4" />
-			add box
-		</Button></Dialog.Trigger
-	>
-	<Dialog.Content class="sm:max-w-[425px]">
-		<Dialog.Header>
-			<Dialog.Title>add box</Dialog.Title>
-		</Dialog.Header>
-		<div class="grid gap-4 py-4">
-			<div class="grid items-center gap-4">
-				<Label for="name">name</Label>
-				<Input id="name" type="text" bind:value={name} />
+{#if window.innerWidth < 768}
+	<Drawer.Root bind:open>
+		<Drawer.Content class="max-h-[96%]">
+			<Drawer.Header>
+				<Drawer.Title>add box</Drawer.Title>
+			</Drawer.Header>
+			<div class="grid gap-4 p-4">
+				<div class="grid items-center gap-4">
+					<Label for="name">name</Label>
+					<Input id="name" type="text" bind:value={name} />
+				</div>
+				<div class="grid items-center gap-4">
+					<Label for="goal">goal</Label>
+					<Input id="goal" type="number" bind:value={goal} />
+				</div>
+				<div class="grid items-center gap-4">
+					<Label for="fill">fill up now</Label>
+					<Switch id="fill" bind:checked={fill} />
+				</div>
 			</div>
-			<div class="grid items-center gap-4">
-				<Label for="goal">goal</Label>
-				<Input id="goal" type="number" bind:value={goal} />
+			<Drawer.Footer>
+				<Button class="w-full" on:click={saveBox} type="submit">save</Button>
+			</Drawer.Footer>
+		</Drawer.Content>
+	</Drawer.Root>
+{:else}
+	<Dialog.Root bind:open>
+		<Dialog.Content class="max-h-[96%]">
+			<Dialog.Header>
+				<Dialog.Title>add box</Dialog.Title>
+			</Dialog.Header>
+			<div class="grid gap-4 py-4">
+				<div class="grid items-center gap-4">
+					<Label for="name">name</Label>
+					<Input id="name" type="text" bind:value={name} />
+				</div>
+				<div class="grid items-center gap-4">
+					<Label for="goal">goal</Label>
+					<Input id="goal" type="number" bind:value={goal} />
+				</div>
+				<div class="grid items-center gap-4">
+					<Label for="fill">fill up now</Label>
+					<Switch id="fill" bind:checked={fill} />
+				</div>
 			</div>
-			<div class="grid items-center gap-4">
-				<Label for="fill">fill up now</Label>
-				<Switch id="fill" bind:checked={fill} />
-			</div>
-		</div>
-		<Dialog.Footer>
-			<Button class="w-full" on:click={saveBox} type="submit">save</Button>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
+			<Dialog.Footer>
+				<Button class="w-full" on:click={saveBox} type="submit">save</Button>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
+{/if}

@@ -1,85 +1,48 @@
 <script lang="ts">
-	import { Button } from "$lib/components/ui/button";
 	import * as Dialog from "$lib/components/ui/dialog";
-	import { Input } from "$lib/components/ui/input";
-	import { Label } from "$lib/components/ui/label";
-	import { Separator } from "$lib/components/ui/separator";
-	import { convertFromSubunits, convertToSubunits } from "$lib/currencies";
-	import { db } from "$lib/db/client";
-	import { boxes as boxesSchema } from "$lib/db/schema";
-	import { currentAccount } from "$lib/stores/account";
-	import { boxes } from "$lib/stores/boxes";
+	import * as Drawer from "$lib/components/ui/drawer";
+	import { Progress } from "$lib/components/ui/progress";
 	import type { Box } from "$lib/types";
-	import { eq } from "drizzle-orm";
+	import EditForm from "./edit-form.svelte";
 
-	export let boxToEdit: Box | undefined;
-	let open: boolean = true;
-	let goal = convertFromSubunits(boxToEdit?.goal as number, $currentAccount.currencyDecimals);
-
-	const saveBox = async () => {
-		await db
-			.update(boxesSchema)
-			.set({
-				name: boxToEdit?.name,
-				goal: convertToSubunits(goal, $currentAccount.currencyDecimals)
-			})
-			.where(eq(boxesSchema.id, boxToEdit?.id as number));
-		await boxes.reload?.();
-		closeDialog();
-	};
-
-	const fill = async () => {
-		await db
-			.update(boxesSchema)
-			.set({
-				balance: boxToEdit?.goal
-			})
-			.where(eq(boxesSchema.id, boxToEdit?.id as number));
-		await boxes.reload?.();
-		closeDialog();
-	};
-
-	const deleteBox = async () => {
-		await db.delete(boxesSchema).where(eq(boxesSchema.id, boxToEdit?.id as number));
-		await boxes.reload?.();
-		closeDialog();
-	};
-
-	const closeDialog = () => {
-		boxToEdit = undefined;
-		open = false;
-	};
+	export let boxToEdit: Box;
+	export let open: boolean = true;
+	export let component: "modal" | "drawer" = "modal";
+	const name = boxToEdit.name;
 </script>
 
-{#if boxToEdit}
-	<Dialog.Root
-		bind:open
-		onOpenChange={(c) => {
-			if (!c) {
-				boxToEdit = undefined;
-			}
-		}}
-	>
-		<Dialog.Content class="sm:max-w-[425px]">
+{#if component === "drawer"}
+	<Drawer.Root bind:open>
+		<Drawer.Content class="max-h-[96%]">
+			<Drawer.Header>
+				<Drawer.Title>{name}</Drawer.Title>
+				<Progress
+					class="mt-3"
+					value={(boxToEdit.balance / boxToEdit.goal) * 100 > 2
+						? (boxToEdit.balance / boxToEdit.goal) * 100
+						: 2}
+					max={100}
+					subClass={boxToEdit.balance >= boxToEdit.goal ? "bg-green-500" : "bg-yellow-500"}
+				/>
+			</Drawer.Header>
+			<EditForm class="p-4" {boxToEdit} bind:open />
+		</Drawer.Content>
+	</Drawer.Root>
+{:else}
+	<Dialog.Root bind:open>
+		<Dialog.Content class="overflow-auto max-h-[96%]">
 			<Dialog.Header>
-				<Dialog.Title>edit box</Dialog.Title>
+				<Dialog.Title>{name}</Dialog.Title>
+				<Progress
+					class="mt-3"
+					value={(boxToEdit.balance / boxToEdit.goal) * 100 > 2
+						? (boxToEdit.balance / boxToEdit.goal) * 100
+						: 2}
+					max={100}
+					subClass={boxToEdit.balance >= boxToEdit.goal ? "bg-green-500" : "bg-yellow-500"}
+				/>
 			</Dialog.Header>
-			<div class="grid gap-4 py-4">
-				<div class="grid items-center gap-4">
-					<Label for="name">name</Label>
-					<Input id="name" type="text" bind:value={boxToEdit.name} />
-				</div>
-				<div class="grid items-center gap-4">
-					<Label for="goal">goal</Label>
-					<Input id="goal" type="number" bind:value={goal} />
-				</div>
-				<Button class="w-full" on:click={saveBox} type="submit">save</Button>
-				<Separator />
-				<Label>fill up from safe-to-spend</Label>
-				<Button class="w-full" variant="secondary" on:click={fill}>fill up</Button>
-				<Separator />
-				<Button class="w-full" variant="destructive" on:click={deleteBox}>delete</Button>
-			</div>
+			<EditForm {boxToEdit} bind:open />
 		</Dialog.Content>
 	</Dialog.Root>
 {/if}
