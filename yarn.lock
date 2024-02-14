@@ -1602,7 +1602,6 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-square-svelte-store: "npm:^1.0.0"
     eslint-plugin-svelte: "npm:^2.35.1"
-    formsnap: "npm:^0.4.3"
     jsdom: "npm:^24.0.0"
     lucide-svelte: "npm:^0.330.0"
     postcss: "npm:^8.4.35"
@@ -1612,7 +1611,6 @@ __metadata:
     radix-icons-svelte: "npm:^1.2.1"
     svelte: "npm:^4.2.10"
     svelte-check: "npm:^3.6.4"
-    sveltekit-superforms: "npm:^1.13.4"
     tailwind-merge: "npm:^2.2.1"
     tailwind-variants: "npm:^0.2.0"
     tailwindcss: "npm:^3.4.1"
@@ -3048,17 +3046,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formsnap@npm:^0.4.3":
-  version: 0.4.3
-  resolution: "formsnap@npm:0.4.3"
-  peerDependencies:
-    svelte: ^4.0.0
-    sveltekit-superforms: ^1.7.1
-    zod: ^3.22.2
-  checksum: 8eea5fbb632bc15e096163530b7a50bcbaaa511fe947ff05de172cd5c4cf64c50c65313341ab95432c913e73d7686b5b02660afebeb7f1b8546a0ae455b403e5
-  languageName: node
-  linkType: hard
-
 "fraction.js@npm:^4.3.7":
   version: 4.3.7
   resolution: "fraction.js@npm:4.3.7"
@@ -4053,13 +4040,6 @@ __metadata:
   version: 4.1.5
   resolution: "kleur@npm:4.1.5"
   checksum: e9de6cb49657b6fa70ba2d1448fd3d691a5c4370d8f7bbf1c2f64c24d461270f2117e1b0afe8cb3114f13bbd8e51de158c2a224953960331904e636a5e4c0f2a
-  languageName: node
-  linkType: hard
-
-"klona@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "klona@npm:2.0.6"
-  checksum: 94eed2c6c2ce99f409df9186a96340558897b3e62a85afdc1ee39103954d2ebe1c1c4e9fe2b0952771771fa96d70055ede8b27962a7021406374fdb695fd4d01
   languageName: node
   linkType: hard
 
@@ -5933,20 +5913,6 @@ __metadata:
     magic-string: "npm:^0.30.4"
     periscopic: "npm:^3.1.0"
   checksum: ae0684512ebcb89c265bae324d8cc191313f83dfe88afa6ae5dc3b272375f6168ab0ffde417a5fdd33d8c14c23b4d9dec32d8f0e3cc581ff3bdd13759c154daa
-  languageName: node
-  linkType: hard
-
-"sveltekit-superforms@npm:^1.13.4":
-  version: 1.13.4
-  resolution: "sveltekit-superforms@npm:1.13.4"
-  dependencies:
-    devalue: "npm:^4.3.2"
-    klona: "npm:^2.0.6"
-  peerDependencies:
-    "@sveltejs/kit": 1.x || 2.x
-    svelte: 3.x || 4.x
-    zod: 3.x
-  checksum: f99c1a9176592fd9e0e03e07567444c94ddfda061b029501c0f2d6c53254e8f3cb138c781b638ab33ee82dc44ef8b542af011f27543d5ea7a98262cd92681d22
   languageName: node
   linkType: hard
 
