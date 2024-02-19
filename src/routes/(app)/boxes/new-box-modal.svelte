@@ -44,11 +44,11 @@
 
 {#if window.innerWidth < 768}
 	<Drawer.Root bind:open>
-		<Drawer.Content class="max-h-[96%]">
+		<Drawer.Content class="h-[96%]">
 			<Drawer.Header>
 				<Drawer.Title>add box</Drawer.Title>
 			</Drawer.Header>
-			<div class="grid gap-4 p-4">
+			<div class="grid gap-4 p-4 overflow-y-scroll">
 				<div class="grid items-center gap-4">
 					<Label for="name">name</Label>
 					<Input id="name" type="text" bind:value={name} />
@@ -61,10 +61,8 @@
 					<Label for="fill">fill up now</Label>
 					<Switch id="fill" bind:checked={fill} />
 				</div>
-			</div>
-			<Drawer.Footer>
 				<Button class="w-full" on:click={saveBox} type="submit">save</Button>
-			</Drawer.Footer>
+			</div>
 		</Drawer.Content>
 	</Drawer.Root>
 {:else}
