@@ -467,10 +467,10 @@
     focus-trap "^7.5.2"
     nanoid "^5.0.4"
 
-"@melt-ui/svelte@0.75.3":
-  version "0.75.3"
-  resolved "https://registry.yarnpkg.com/@melt-ui/svelte/-/svelte-0.75.3.tgz#4b6fa9ee76891e77f92154b710a04e353a494515"
-  integrity sha512-EA2IKn7w9qtzO/M7VEENpphQ9A4az+QDMQbA8SJLuKyu+S8NWliln5y9vvmnx9dZF8GtKtUKuxpwRNyPg5LAOg==
+"@melt-ui/svelte@0.76.0":
+  version "0.76.0"
+  resolved "https://registry.yarnpkg.com/@melt-ui/svelte/-/svelte-0.76.0.tgz#07ecd835ceebe917f55f79aff26fca667b8df216"
+  integrity sha512-X1ktxKujjLjOBt8LBvfckHGDMrkHWceRt1jdsUTf0EH76ikNPP1ofSoiV0IhlduDoCBV+2YchJ8kXCDfDXfC9Q==
   dependencies:
     "@floating-ui/core" "^1.3.1"
     "@floating-ui/dom" "^1.4.5"
@@ -599,10 +599,10 @@
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-static/-/adapter-static-3.0.1.tgz#64c36020435d7b1eacd362b2d027fefda5ec2e44"
   integrity sha512-6lMvf7xYEJ+oGeR5L8DFJJrowkefTK6ZgA4JiMqoClMkKq0s6yvsd3FZfCFvX1fQ0tpCD7fkuRVHsnUVgsHyNg==
 
-"@sveltejs/kit@^2.5.2":
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-2.5.2.tgz#6b90da2b89df462163e10f1f2f9a587bc4366ba9"
-  integrity sha512-1Pm2lsBYURQsjnLyZa+jw75eVD4gYHxGRwPyFe4DAmB3FjTVR8vRNWGeuDLGFcKMh/B1ij6FTUrc9GrerogCng==
+"@sveltejs/kit@^2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-2.5.3.tgz#0d06481c234888287fa6d3c51393c9aa0f6c43ae"
+  integrity sha512-s6x7HBn/Fp+UNvyhJohjIA0FcJ+BWHGUDQ4PCg1D0EboUlvbimJQYchINu8G6sspLXYmlcsuNsp8bbcrRk85iw==
   dependencies:
     "@types/cookie" "^0.6.0"
     cookie "^0.6.0"
@@ -1076,13 +1076,13 @@ bits-ui@^0.16.0:
     "@melt-ui/svelte" "0.68.0"
     nanoid "^5.0.4"
 
-bits-ui@^0.19.5:
-  version "0.19.5"
-  resolved "https://registry.yarnpkg.com/bits-ui/-/bits-ui-0.19.5.tgz#61508e5367790aac478aa9ab6569499ffc5a35c1"
-  integrity sha512-jrt0pGZdixtl27VrfzLj5yJxha29CK+6nClZZSoJCL5DlXFT1sluF9NnOSMP48D3kczR5YjpArvCe0BEnGq4jA==
+bits-ui@^0.19.6:
+  version "0.19.6"
+  resolved "https://registry.yarnpkg.com/bits-ui/-/bits-ui-0.19.6.tgz#9fdcc7dc58eab47d0c296ba8c6bc9f6852c6b5fb"
+  integrity sha512-ZKWHa1Vt8YW7DdooeNleVdtOtk9hxXZIo8El0myqn7r8S8OkJaSPXhQn/jp4/Q6BphYxZ2Tatqb/WLphmrSfUg==
   dependencies:
     "@internationalized/date" "^3.5.1"
-    "@melt-ui/svelte" "0.75.3"
+    "@melt-ui/svelte" "0.76.0"
     nanoid "^5.0.5"
 
 brace-expansion@^1.1.7:
@@ -1534,10 +1534,10 @@ drizzle-kit@^0.20.14:
     semver "^7.5.4"
     zod "^3.20.2"
 
-drizzle-orm@^0.29.5:
-  version "0.29.5"
-  resolved "https://registry.yarnpkg.com/drizzle-orm/-/drizzle-orm-0.29.5.tgz#b82bb6d67101fff9438dacd4b09e9cd23109f49c"
-  integrity sha512-jS3+uyzTz4P0Y2CICx8FmRQ1eplURPaIMWDn/yq6k4ShRFj9V7vlJk67lSf2kyYPzQ60GkkNGXcJcwrxZ6QCRw==
+drizzle-orm@^0.30.1:
+  version "0.30.1"
+  resolved "https://registry.yarnpkg.com/drizzle-orm/-/drizzle-orm-0.30.1.tgz#309fa01d879de333db0ea4eb31f92367ce08a6ea"
+  integrity sha512-5P6CXl4XyWtDDiYOX/jYOJp1HTUmBlXRAwaq+muUOgaSykMEy5sJesCxceMT0oCGvxeWkKfSXo5owLnfKwCIdw==
 
 eastasianwidth@^0.2.0:
   version "0.2.0"
@@ -2784,10 +2784,10 @@ lru-queue@^0.1.0:
   dependencies:
     es5-ext "~0.10.2"
 
-lucide-svelte@^0.349.0:
-  version "0.349.0"
-  resolved "https://registry.yarnpkg.com/lucide-svelte/-/lucide-svelte-0.349.0.tgz#7f762bd2ab87f134a7fb4bc42101280185ee7d26"
-  integrity sha512-aOtTEE3Bm1voDCDUaEBqF5ZKLDzUHQtCo6xgSHrjivBETzSA0KLAhUFuug9n685vnYODtbkdlO3xn+zpQiFoYg==
+lucide-svelte@^0.356.0:
+  version "0.356.0"
+  resolved "https://registry.yarnpkg.com/lucide-svelte/-/lucide-svelte-0.356.0.tgz#7ace0c8e357e495a0594464a814811dce09ae6b5"
+  integrity sha512-aUr+L9uJkRvT15egByH4KLPoIXh47fG7Dm03b4G1Dk2nfTDuuLebloUaBKUzFsBUcVrBKBje+L5/Xnz3OoUyCg==
 
 lz-string@^1.5.0:
   version "1.5.0"
@@ -3680,6 +3680,7 @@ stop-iteration-iterator@^1.0.0:
     internal-slot "^1.0.4"
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -4107,10 +4108,10 @@ vite-node@1.3.1:
     picocolors "^1.0.0"
     vite "^5.0.0"
 
-vite@^5.0.0, vite@^5.1.5:
-  version "5.1.5"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-5.1.5.tgz#bdbc2b15e8000d9cc5172f059201178f9c9de5fb"
-  integrity sha512-BdN1xh0Of/oQafhU+FvopafUp6WaYenLU/NFoL5WyJL++GxkNfieKzBhM24H3HVsPQrlAqB7iJYTHabzaRed5Q==
+vite@^5.0.0, vite@^5.1.6:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-5.1.6.tgz#706dae5fab9e97f57578469eef1405fc483943e4"
+  integrity sha512-yYIAZs9nVfRJ/AiOLCA91zzhjsHUgMjB+EigzFb6W2XTLO8JixBCKCjvhKZaye+NKYHCrkv3Oh50dH9EdLU2RA==
   dependencies:
     esbuild "^0.19.3"
     postcss "^8.4.35"
